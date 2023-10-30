@@ -78,8 +78,11 @@ Plugins used:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Contributors
+<a href="https://github.com/Hi-kue/COMP229_Milestone/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Hi-kue/COMP229_Milestone" />
+</a>
 
-Please list your name below when you are given access to the repo, with your GitHub username and whatever else you want to include 😄.
+Once you become a contributor, this should be able to automatically update withy our Github Icon but feel free to add whatever else you want 😄.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
