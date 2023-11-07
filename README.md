@@ -82,7 +82,7 @@ Plugins used:
   <img src="https://contrib.rocks/image?repo=Hi-kue/COMP229_Milestone" />
 </a>
 
-Once you become a contributor, this should be able to automatically update withy our Github Icon but feel free to add whatever else you want 😄.
+Once you become a contributor, this should be able to automatically update with your Github Icon but feel free to add whatever else you want 😄.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
