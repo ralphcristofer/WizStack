@@ -1,11 +1,3 @@
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-![Radix UI](https://img.shields.io/badge/radix_ui-%23AC4EA4.svg?style=for-the-badge&logo=radix-ui&logoColor=white)
-
-
 <br />
 <div align="center">
   <a href="/url">
@@ -24,6 +16,14 @@
     ✧
     <a href="https://github.com/Hi-kue/Wizstack/issues">Request Feature</a>
   </p>
+</div>
+<div style="text-align: center;">
+  <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React">
+  <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" alt="Express.js">
+  <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+  <img src="https://img.shields.io/badge/radix_ui-%23AC4EA4.svg?style=for-the-badge&logo=radix-ui&logoColor=white" alt="Radix UI">
 </div>
 <br />
 
@@ -117,7 +117,7 @@ To get started with navigating the repository, please refer to the following mod
 
 As the project becomes more complex, we will provide an updated project structure to help with navigating and understanding the repository at a glance. For now, please refer to the following table to understand the purpose of each folder in the repository:
 
-<table align="center">
+<table style="align:center">
   <tr>
     <th width="500px">Folder</th>
     <th width="500px">Description</th>
@@ -242,4 +242,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   <img src="https://contrib.rocks/image?repo=Hi-kue/COMP229_Milestone" />
 </a>
 
-Once you become a contributor, this should be able to automatically update with your Github Icon but feel free to add whatever else you want 😄.
+To become a contributor, please edit and submit a pull request. This will be reviewed and approved by the project maintainers, and automatically add you to the list of contributors.
