@@ -5,3 +5,10 @@ export const About = () => {
         </div>
     )
 }
+
+// Homepage -> signup -> dashboard
+// isAdmin? true false
+// functionality
+// timetable, courses [enroll]
+
+// Important Main Pages -> Homepage, Dashboard
