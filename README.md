@@ -1,7 +1,7 @@
 <br />
 <div align="center">
   <a href="/url">
-    <img src="public/assets/Wizstack Title.png" alt="Logo" height="200">
+    <img src="./src/assets/Wizstack Title.png" alt="Logo" height="200">
   </a>
 
   <h3 align="center">Wizstack - Student Management System</h3>
