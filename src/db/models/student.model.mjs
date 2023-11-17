@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
-// Schema for users collection
+/**
+ * User Schema 
+ * @description Blueprint for user model.
+ * @memberof module:db/models/users
+ */
 const usersSchema = new mongoose.Schema({
     is_admin: { type: Boolean, default: false },
     first_name: { type: String, trim: true, required: [true, "Please enter a first name"] },
@@ -16,10 +20,10 @@ const usersSchema = new mongoose.Schema({
     user_name: {
         type: String,
         default: function(){
-            return this.email; // if it does not work as expected, please set default on the controller - create user.
+            return this.email;  // TODO: If this does not work, please set default on the controller - create user.
         }
     },
-    hashed_password: { type: String, required: [true, "Please enter a password."] }, // Expect to modify to work with authentication
+    hashed_password: { type: String, required: [true, "Please enter a password."] }, // TODO: Expect hashed password from front-end.
     program: { type: mongoose.Schema.Types.ObjectId, ref: 'program' },
     courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'courses' }],
     created: { type:Date, default:Date.now },

@@ -3,23 +3,41 @@ import { createUser, listAllUsers, fetchUser, updateUser, deleteUser } from '../
 
 const userRouter = express.Router();
 
-// <todo>
-// basically created a template where you will do back-end routes here
+/**
+ * @module routes/api/users
+ * @description ExpressJS router for /api/users routes.
+ * 
+ * TODO: This is a template where you will do back-end routes here.
+ */
 
-// also here is /users but might be /students?
-// Create a user
+/**
+ * POST :: /users
+ * @description Creates a new User in the database.
+ */
 userRouter.post('/users', createUser);
 
-// List all users
+/**
+ * GET :: /users
+ * @description Lists all Users from the database.
+ */
 userRouter.get('/users', listAllUsers);
 
-// Fetch a user by ID
+/**
+ * GET :: /users/:userId
+ * @description Fetches a single User from the database.
+ */
 userRouter.get('/users/:userId', fetchUser);
 
-// Update a user
+/**
+ * PATCH :: /users/:userId
+ * @description Updates a single User from the database.
+ */
 userRouter.put('/users/:userId', updateUser);
 
-// Delete a user
+/**
+ * DELETE :: /users/:userId
+ * @description Deletes a single User from the database.
+ */
 userRouter.delete('/users/:userId', deleteUser);
 
 export default userRouter;
