@@ -25,7 +25,7 @@ const usersSchema = new mongoose.Schema({
         }
     },
     hashed_password: { type: String, required: [true, "Please enter a password."] }, // TODO: Expect hashed password from front-end.
-    program: { type: mongoose.Schema.Types.ObjectId, ref: 'program' },
+    program: { type: mongoose.Schema.Types.ObjectId, ref: 'programs' },
     courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'courses' }],
     created: { type:Date, default:Date.now },
     updated: { type:Date, default:Date.now }
