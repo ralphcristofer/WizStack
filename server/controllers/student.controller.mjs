@@ -1,6 +1,6 @@
 // i will create here a simple template for the next person
-import { HttpStatus } from '../../src/utils/helpers/dialogInvoke';
-import users from '../models/student.model.mjs';
+import { HttpStatus } from '../util/dialogInvoke.js';
+import users from '../models/users.model.mjs';
 
 
 const httpStatusHandler = new HttpStatus();

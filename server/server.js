@@ -3,6 +3,7 @@
 import dotenv from 'dotenv';
 import process from 'process';
 import express from 'express';
+import cors from 'cors';
 import connectDb from './config/config.mjs';
 import { HttpStatus } from './util/dialogInvoke.js';
 
@@ -10,7 +11,7 @@ import { HttpStatus } from './util/dialogInvoke.js';
 // import { createUser, listAllUsers, fetchUser, updateUser, deleteUser } from './src/db/controllers/student.controller.mjs';
 // import users from './src/db/models/student.model.mjs';
 // import authRouter from './src/routes/api/auth.routes.mjs';
-import userRouter from './src/routes/api/users.routes.mjs'
+import userRouter from './routes/api/users.routes.mjs';
 
 
 const app = express();
@@ -19,6 +20,7 @@ dotenv.config();
 connectDb();
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
