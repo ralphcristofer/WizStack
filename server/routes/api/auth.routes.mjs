@@ -13,6 +13,6 @@ authRouter.post('/auth/signin', signIn);
  * GET :: /auth/signout
  * @description Signs out a user.
  */
-authRouter.get('/auth/signout', signOut); // Optional
+authRouter.get('/auth/signout', signOut);
 
 export default authRouter;
