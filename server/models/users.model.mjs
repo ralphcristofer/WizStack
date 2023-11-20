@@ -82,6 +82,7 @@ const usersSchema = new mongoose.Schema({
       message: "Passwords Not Matched!",
     },
   },
+  passwordChangedAt: Date,
   program: { type: mongoose.Schema.Types.ObjectId, ref: "programs" },
   courses: [{ type: mongoose.Schema.Types.ObjectId, ref: "courses" }],
   created: { type: Date, default: Date.now },
@@ -106,15 +107,20 @@ usersSchema.pre("save", async function (next) {
 
 /**
  * Create a function that can be implemented in all documents in a specific collection.
- * @param {*} candidatePassword 
- * @param {*} userPassword 
- * @returns 
+ * @param {*} candidatePassword
+ * @param {*} userPassword
+ * @returns
  */
 usersSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+usersSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+  }
 };
 
 const users = mongoose.model("users", usersSchema);

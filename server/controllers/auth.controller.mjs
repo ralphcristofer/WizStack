@@ -115,8 +115,29 @@ const protect = catchAsync(async (req, res, next) => {
   }
 
   // Check if the user changes the password after JWT was issued
+
+  req.user = freshUser;
   next();
 });
+
+/***
+ *
+ * User roles and authorizations
+ */
+
+const restrictTo = (...roles) => {
+  return (req, res, next) => {
+    //roles is an array: ["administrator", 'lead-guide']
+    //In users.routes, only administrator can access listAllUsers
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError("You do not have permission to perform this action", 403)
+      );
+    }
+
+    next();
+  };
+};
 
 /**
  * Sign out a user.
@@ -146,4 +167,4 @@ const signOut = catchAsync(async (req, res, next) => {
   });
 });
 
-export { signUp, signIn, signOut, protect };
+export { signUp, signIn, signOut, protect, restrictTo };
