@@ -23,6 +23,9 @@ connectDb();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+/* app.use((req, res, next) => {
+  console.log(req.headers);
+}) */
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Wizstack Student Management App" });

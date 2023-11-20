@@ -83,6 +83,42 @@ const signIn = catchAsync(async (req, res, next) => {
 });
 
 /**
+ * The 'Protect' function is used to protect the specific router can only be accessed by specific user
+ */
+
+const protect = catchAsync(async (req, res, next) => {
+  // Getting the token to see if the user is there
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
+  }
+
+  // If user without bearing a token to visit a route, his access will be denied.
+  if (!token) {
+    return next(new AppError("You are not logged in, Please log in again"));
+  }
+
+  // Verification Token
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  console.log(decoded);
+
+  // Check if user still exists
+  // This situation may happen the user is deleted by the admin, while its token is still available
+  const freshUser = await users.findById(decoded.id);
+  if (!freshUser) {
+    return next(
+      new AppError("The user belonging to this token does not exist anymore")
+    );
+  }
+
+  // Check if the user changes the password after JWT was issued
+  next();
+});
+
+/**
  * Sign out a user.
  * @todo Complete sign-out logic.
  * @param {*} req
@@ -110,4 +146,4 @@ const signOut = catchAsync(async (req, res, next) => {
   });
 });
 
-export { signUp, signIn, signOut };
+export { signUp, signIn, signOut, protect };
