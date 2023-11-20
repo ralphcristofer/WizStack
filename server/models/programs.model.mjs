@@ -5,7 +5,6 @@ import mongoose from 'mongoose';
  * @description Blueprint for user model.
  * @memberof module:db/models/programs
  */
-
 const programsSchema = new mongoose.Schema({
     // only admin can manipulate programs
     _id:{ type: String, trim: true, required: [true, "Please enter a the course ID. e.g., COMP229"] },
@@ -17,7 +16,7 @@ const programsSchema = new mongoose.Schema({
 });
 
 // Pre-save hook to transform _id to uppercase
-coursesSchema.pre('save', function(next) {
+programsSchema.pre('save', function(next) {
     this._id = this._id.toUpperCase();
     next();
 });
