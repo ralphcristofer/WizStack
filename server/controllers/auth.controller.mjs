@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import users from "./../models/users.model.mjs";
 import AppError from "../util/AppError.mjs";
 import catchAsync from "../util/catchAsync.mjs";
-import { LogOutOptions } from "passport";
+import { promisify } from "util";
 
 // Create a function to generate a token
 const generateToken = (id) => {
@@ -12,10 +12,15 @@ const generateToken = (id) => {
   });
 };
 
+/**
+ * Saving the Refresh Token
+ */
+
 /***
  * User Sign up
  */
 const signUp = catchAsync(async (req, res, next) => {
+  //produce id in database
   const newUser = await users.create({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
@@ -54,7 +59,7 @@ const signUp = catchAsync(async (req, res, next) => {
  * @param {*} req
  * @param {*} res
  */
-const signIn = catchAsync(async (req, res) => {
+const signIn = catchAsync(async (req, res, next) => {
   // TODO: Complete sign-in Logic
 
   //Retrieve email and password from the user
@@ -83,8 +88,26 @@ const signIn = catchAsync(async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const signOut = async (req, res) => {
-  // TODO: Complete sign-out Logic
-};
+const signOut = catchAsync(async (req, res, next) => {
+  const email = req.email;
+
+  const currentUser = await users.findOne({ email });
+
+  let token;
+
+  if (currentUser) {
+    token = jwt.sign(currentUser._id, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRES_IN_FOR_LOGOUT,
+    });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      res.status(401).json({
+        status: "Your token has expired, you have been logged out!",
+      });
+    }
+  });
+});
 
 export { signUp, signIn, signOut };
