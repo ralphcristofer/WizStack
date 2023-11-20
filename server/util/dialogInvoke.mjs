@@ -9,8 +9,8 @@ const dialogType = {
 };
 
 /**
- * dialogInvoke()
- * @description Invokes a status dialog box with a message.
+ * @class HttpStatus
+ * @description A custom class that checks for the status code and status type.
  */
 class HttpStatus {
     constructor() {

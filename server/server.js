@@ -3,6 +3,7 @@
 import dotenv from "dotenv";
 import process from "process";
 import express from "express";
+import cors from 'cors';
 import connectDb from "./config/config.mjs";
 import { HttpStatus } from "./util/dialogInvoke.mjs";
 
@@ -31,10 +32,8 @@ app.get("/wizsecret", (req, res) => {
   res.json({ message: "Wizstack Student Management App" });
 });
 
-// app.get('/users', listAllUsers);
 app.use("/api", userRouter);
 app.use("/api", authRouter);
-// app.use('/auth', authRouter);
 
 app.listen(process.env.PORT, () => {
   httpStatus.showMessage(
