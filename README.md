@@ -80,37 +80,47 @@ To get started with navigating the repository, please refer to the following mod
 
 ```bash
 .
-├── node_modules/
-│   └── ...
-├── public/
-│   ├── assets/
+├── node_modules
+├── public
+├── server/
+│   ├── config/
 │   │   └── ...
-│   ├── fonts/
+│   ├── controllers/
 │   │   └── ...
+│   ├── models/
+│   │   └── ...
+│   ├── node_modules/
+│   │   └── ...
+│   ├── routes/
+│   │   └── api/
+│   │       └── ...
+│   ├── util/
+│   │   └── ...
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server.js
 ├── src/
 │   ├── assets/
 │   │   └── ...
 │   ├── components/
 │   │   └── ...
-│   ├── db/
-│   │   ├── controllers/
-│   │   │   └── ...
-│   │   └── models/
-│   │       └── ...
+│   ├── hooks/
+│   │   └── ...
 │   ├── layout/
 │   │   └── ...
-│   ├── routers/
+│   ├── pages/
 │   │   └── ...
-│   └── utils/
-│       ├── constants/
-│       │   └── ...
-│       └── helpers/
-│           └── ...
-├── .env
-├── .env.local
+│   ├── util/
+│   │   └── ...
+│   ├── app.css
+│   ├── app.jsx
+│   ├── index.css
+│   └── main.jsx
 ├── .eslintrc.cjs
+├── .gitattributes
 ├── .gitignore
 ├── index.html
+├── LICENSE
 ├── package-lock.json
 ├── package.json
 ├── README.md

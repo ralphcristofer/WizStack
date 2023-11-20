@@ -5,7 +5,6 @@ import mongoose from 'mongoose';
  * @description Blueprint for user model.
  * @memberof module:db/models/programs
  */
-
 const programsSchema = new mongoose.Schema({
     // only admin can manipulate programs
     code:{ type: Number, trim: true, required: [true, "Please enter a the course ID. e.g., 3581."] },
