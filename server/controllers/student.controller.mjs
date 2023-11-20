@@ -1,4 +1,3 @@
-// i will create here a simple template for the next person
 import { HttpStatus } from "../util/dialogInvoke.mjs";
 import users from "./../models/users.model.mjs";
 

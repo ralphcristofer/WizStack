@@ -13,10 +13,7 @@ dotenv.config({ path: "./config.env" });
  */
 const connectDb = async () => {
   try {
-    await mongoose.connect(process.env.DB_CONN, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.DB_CONN, { });
     httpStatus.showMessage(
       httpStatus.getStatusType(200),
       200,

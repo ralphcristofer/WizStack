@@ -10,11 +10,17 @@ import bcrypt from "bcryptjs";
  * User Schema
  * @description Blueprint for user model.
  * @memberof module:db/models/users
+ * @property {String} role - User role, either 'student' or 'administrator'
+ * @property {String} first_name - User first name
+ * @property {String} last_name - User last name
+ * @property {String} email - User email address
+ * @property {Object} address - User address
+ * @property {String} user_name - User name
+ * @property {String} password - User password
+ * @property {String} passwordConfirm - User password confirmation
  */
-
 const usersSchema = new mongoose.Schema({
-  // create a 'role' property to replace is_admin
-  //is_admin: { type: Boolean, default: false },
+  // Role is either 'student' or 'administrator'
   role: {
     type: String,
     enum: ["student", "administrator"],
@@ -30,7 +36,7 @@ const usersSchema = new mongoose.Schema({
     trim: true,
     required: [true, "Please enter a last name"],
   },
-  //add 'unique' and 'validate' properties
+  // Unique email address for each user
   email: {
     type: String,
     required: [true, "Please enter a student email"],
@@ -48,7 +54,7 @@ const usersSchema = new mongoose.Schema({
   user_name: {
     type: String,
     default: function () {
-      return this.email; // TODO: If this does not work, please set default on the controller - create user.
+      return this.email;
     },
   },
 
@@ -63,7 +69,7 @@ const usersSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter a password"],
     minlength: 8,
-    select: false, // make password not visible when listening all users
+    select: false, // Hide password from being displayed in any output
   },
 
   passwordConfirm: {
@@ -82,20 +88,28 @@ const usersSchema = new mongoose.Schema({
   updated: { type: Date, default: Date.now },
 });
 
-//  Create a 'pre' hook before save the new document into the collection
+/**
+ * @function pre
+ * @description A pre-hook before saving the new user document into the collection.
+ */
 usersSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
-  //save the current password into a hashed version
+  // Hash and salt the password
   this.password = await bcrypt.hash(this.password, 12);
 
-  //delete the passwordConfirm
+  // Delete passwordConfirm field
   this.passwordConfirm = undefined;
 
   next();
 });
 
-// '.methods' is used to create a function that cna be implemented in all documents in a specific collection
+/**
+ * Create a function that can be implemented in all documents in a specific collection.
+ * @param {*} candidatePassword 
+ * @param {*} userPassword 
+ * @returns 
+ */
 usersSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
