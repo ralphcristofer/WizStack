@@ -8,7 +8,7 @@ import connectDb from './config/config.mjs';
 import { HttpStatus } from './util/dialogInvoke.js';
 
 // import { signIn, signOut } from './src/db/controllers/auth.controller.mjs';
-// import { createUser, listAllUsers, fetchUser, updateUser, deleteUser } from './src/db/controllers/student.controller.mjs';
+// import { createUser, listAllUsers, fetchUser, updateUser, deleteUser } from './controllers/student.controller.mjs';
 // import users from './src/db/models/student.model.mjs';
 // import authRouter from './src/routes/api/auth.routes.mjs';
 import userRouter from './routes/api/users.routes.mjs';
