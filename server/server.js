@@ -10,6 +10,7 @@ import { HttpStatus } from "./util/dialogInvoke.mjs";
 // import { createUser, listAllUsers, fetchUser, updateUser, deleteUser } from './src/db/controllers/student.controller.mjs';
 // import users from './src/db/models/student.model.mjs';
 // import authRouter from './src/routes/api/auth.routes.mjs';
+
 import userRouter from "./routes/api/users.routes.mjs";
 import authRouter from "./routes/api/auth.routes.mjs";
 
@@ -19,6 +20,7 @@ dotenv.config({ path: "./config.env" });
 connectDb();
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
