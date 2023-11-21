@@ -62,19 +62,25 @@ const listAllUsers = async (req, res) => {
  */
 const fetchUser = async (req, res) => {
   // TODO: Edit Logic to Fetch a User
-  const { id } = req.params;
+  //const { id } = req.params;
 
   try {
-    const user = await users.findById(id);
+    const user = await users.findById(req.params.userId);
 
-    res.json(user);
+    //res.json(user);
+    res.status(200).json({
+      status: "Successfully find the user",
+      data: {
+        user,
+      },
+    });
   } catch (err) {
     httpStatusHandler.showMessage(
       httpStatusHandler.getStatusType(err.statusCode),
       err.statusCode,
       err.message
     );
-    res.status(500).json({ error: "Internal server error" });
+    // res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -86,18 +92,16 @@ const fetchUser = async (req, res) => {
  */
 const updateUser = async (req, res) => {
   // TODO : Edit Logic to Update a User
-  const { firstName, lastName, email, password } = req.body;
-  const { id } = req.params;
+  /* const { firstName, lastName, email, password } = req.body;
+  const { id } = req.params; */
 
   try {
-    const user = await users.findByIdAndUpdate(id, {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
+    const user = await users.findByIdAndUpdate(req.params.userId, req.body, {
+      new: true,
+      runValidators: true,
     });
 
-    res.json({ message: "User updated successfully", user });
+    res.json({ message: "User updated successfully", data: user });
   } catch (err) {
     httpStatusHandler.showMessage(
       httpStatusHandler.getStatusType(err.statusCode),
@@ -116,10 +120,10 @@ const updateUser = async (req, res) => {
  */
 const deleteUser = async (req, res) => {
   // TODO: Edit Logic to Delete a User
-  const { id } = req.params;
+  //const { id } = req.params;
 
   try {
-    const user = await users.findByIdAndDelete(id);
+    const user = await users.findByIdAndDelete(req.params.userId);
 
     res.json({ message: "User deleted successfully", user });
   } catch (err) {

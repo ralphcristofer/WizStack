@@ -116,6 +116,7 @@ const protect = catchAsync(async (req, res, next) => {
 
   // Check if the user changes the password after JWT was issued
 
+  //Assign the freshUser to the req.user for later use.
   req.user = freshUser;
   next();
 });
@@ -138,6 +139,33 @@ const restrictTo = (...roles) => {
     next();
   };
 };
+
+/**
+ * Forgot Password
+ */
+
+const forgotPassword = catchAsync(async (req, res, next) => {
+  // Get user based on posted email
+  const user = await users.findOne({ email: req.body.email });
+  if (!user) {
+    return next(
+      new AppError("We cannot match the account with your email", 404)
+    );
+  }
+
+  // Generate the random reset token
+  const resetToken = user.createPasswordResetToken();
+
+  // Properties of 'passwordResetToken' and 'passwordResetExpired' need to be saved to the datebase
+  await user.save({ validateBeforeSave: false });
+
+  res.status(200).json({
+    status: "The reset token has been sent your registered email address",
+    resetToken: resetToken,
+  });
+
+  // Sent it to user's email
+});
 
 /**
  * Sign out a user.
@@ -167,4 +195,4 @@ const signOut = catchAsync(async (req, res, next) => {
   });
 });
 
-export { signUp, signIn, signOut, protect, restrictTo };
+export { signUp, signIn, signOut, protect, restrictTo, forgotPassword };

@@ -40,7 +40,7 @@ userRouter.get("/users/:userId", fetchUser);
  * PATCH :: /users/:userId
  * @description Updates a single User from the database.
  */
-userRouter.put("/users/:userId", updateUser);
+userRouter.patch("/users/:userId", updateUser);
 
 /**
  * DELETE :: /users/:userId

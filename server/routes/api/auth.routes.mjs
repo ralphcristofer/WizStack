@@ -3,6 +3,7 @@ import {
   signUp,
   signIn,
   signOut,
+  forgotPassword,
 } from "./../../controllers/auth.controller.mjs";
 
 const authRouter = express.Router();
@@ -14,6 +15,9 @@ const authRouter = express.Router();
 authRouter.post("/auth/signup", signUp);
 
 authRouter.post("/auth/signin", signIn);
+
+authRouter.post("/auth/forgotPassword", forgotPassword);
+//authRouter.post("/auth/resetPassword");
 
 /**
  * GET :: /auth/signout
