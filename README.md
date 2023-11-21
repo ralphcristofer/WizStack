@@ -39,7 +39,6 @@
 - [Navigating the Repo](#navigating-the-repo)
 - [Built With](#built-with)
 - [License](#license)
-- [Contributors](#contributors)
 
 
 ## About Wizstack
@@ -143,8 +142,32 @@ As the project becomes more complex, we will provide an updated project structur
     <td></td>
   </tr>
   <tr>
+    <td><code>server/</code></td>
+    <td>Root for backend side logic</td>
+  </tr>
+  <tr>
+    <td><code>server/config</code></td>
+    <td>Config directory for database connection</td>
+  </tr>
+  <tr>
+    <td><code>server/controllers</code></td>
+    <td>Controller logic for each api route</td>
+  </tr>
+  <tr>
+    <td><code>server/models</code></td>
+    <td>Models for each collection in database</td>
+  </tr>
+   <tr>
+    <td><code>server/routes/api</code></td>
+    <td>API routes</td>
+  </tr>
+   <tr>
+    <td><code>server/util</code></td>
+    <td>Utility functions and classes for backend logic</td>
+  </tr>
+  <tr>
     <td><code>src/</code></td>
-    <td>Root of the source code</td>
+    <td>Root for frontend side logic</td>
   </tr>
   <tr>
     <td><code>src/assets/</code></td>
@@ -155,24 +178,8 @@ As the project becomes more complex, we will provide an updated project structur
     <td>Components used in the project</td>
   </tr>
   <tr>
-    <td><code>src/db/</code></td>
-    <td>Database-related code</td>
-  </tr>
-  <tr>
-    <td><code>src/db/controllers/</code></td>
-    <td>Controllers for the database</td>
-  </tr>
-  <tr>
-    <td><code>src/db/models/</code></td>
-    <td>Models for the database</td>
-  </tr>
-  <tr>
     <td><code>src/layout/</code></td>
     <td>Layout-related code</td>
-  </tr>
-  <tr>
-    <td><code>src/routers/</code></td>
-    <td>Code related to routing in the project</td>
   </tr>
   <tr>
     <td><code>src/utils/</code></td>
@@ -248,10 +255,3 @@ Plugins used:
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contributors
-<a href="https://github.com/Hi-kue/COMP229_Milestone/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Hi-kue/COMP229_Milestone" />
-</a>
-
-To become a contributor, please edit and submit a pull request. This will be reviewed and approved by the project maintainers, and automatically add you to the list of contributors.
