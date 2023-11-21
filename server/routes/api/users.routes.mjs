@@ -6,6 +6,7 @@ import {
   updateUser,
   deleteUser,
 } from "./../../controllers/student.controller.mjs";
+import { protect, restrictTo } from "../../controllers/auth.controller.mjs";
 
 const userRouter = express.Router();
 
@@ -26,7 +27,8 @@ userRouter.post("/users", createUser);
  * GET :: /users
  * @description Lists all Users from the database.
  */
-userRouter.get("/users", listAllUsers);
+//Add 'protect' middleware to make sure non-logged in users can not access to this function
+userRouter.get("/users", protect, restrictTo("administrator"), listAllUsers);
 
 /**
  * GET :: /users/:userId
@@ -38,12 +40,17 @@ userRouter.get("/users/:userId", fetchUser);
  * PATCH :: /users/:userId
  * @description Updates a single User from the database.
  */
-userRouter.put("/users/:userId", updateUser);
+userRouter.patch("/users/:userId", updateUser);
 
 /**
  * DELETE :: /users/:userId
  * @description Deletes a single User from the database.
  */
-userRouter.delete("/users/:userId", deleteUser);
+userRouter.delete(
+  "/users/:userId",
+  protect,
+  restrictTo("administrator"),
+  deleteUser
+);
 
 export default userRouter;

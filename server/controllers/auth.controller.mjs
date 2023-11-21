@@ -83,6 +83,91 @@ const signIn = catchAsync(async (req, res, next) => {
 });
 
 /**
+ * The 'Protect' function is used to protect the specific router can only be accessed by specific user
+ */
+
+const protect = catchAsync(async (req, res, next) => {
+  // Getting the token to see if the user is there
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split(" ")[1];
+  }
+
+  // If user without bearing a token to visit a route, his access will be denied.
+  if (!token) {
+    return next(new AppError("You are not logged in, Please log in again"));
+  }
+
+  // Verification Token
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  console.log(decoded);
+
+  // Check if user still exists
+  // This situation may happen the user is deleted by the admin, while its token is still available
+  const freshUser = await users.findById(decoded.id);
+  if (!freshUser) {
+    return next(
+      new AppError("The user belonging to this token does not exist anymore")
+    );
+  }
+
+  // Check if the user changes the password after JWT was issued
+
+  //Assign the freshUser to the req.user for later use.
+  req.user = freshUser;
+  next();
+});
+
+/***
+ *
+ * User roles and authorizations
+ */
+
+const restrictTo = (...roles) => {
+  return (req, res, next) => {
+    //roles is an array: ["administrator", 'lead-guide']
+    //In users.routes, only administrator can access listAllUsers
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError("You do not have permission to perform this action", 403)
+      );
+    }
+
+    next();
+  };
+};
+
+/**
+ * Forgot Password
+ */
+
+const forgotPassword = catchAsync(async (req, res, next) => {
+  // Get user based on posted email
+  const user = await users.findOne({ email: req.body.email });
+  if (!user) {
+    return next(
+      new AppError("We cannot match the account with your email", 404)
+    );
+  }
+
+  // Generate the random reset token
+  const resetToken = user.createPasswordResetToken();
+
+  // Properties of 'passwordResetToken' and 'passwordResetExpired' need to be saved to the datebase
+  await user.save({ validateBeforeSave: false });
+
+  res.status(200).json({
+    status: "The reset token has been sent your registered email address",
+    resetToken: resetToken,
+  });
+
+  // Sent it to user's email
+});
+
+/**
  * Sign out a user.
  * @todo Complete sign-out logic.
  * @param {*} req
@@ -110,4 +195,4 @@ const signOut = catchAsync(async (req, res, next) => {
   });
 });
 
-export { signUp, signIn, signOut };
+export { signUp, signIn, signOut, protect, restrictTo, forgotPassword };

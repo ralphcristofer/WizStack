@@ -6,6 +6,9 @@ import validator from "validator";
 //import bcrypt package
 import bcrypt from "bcryptjs";
 
+//import 'crypto' package
+import crypto from "crypto";
+
 /**
  * User Schema
  * @description Blueprint for user model.
@@ -82,6 +85,9 @@ const usersSchema = new mongoose.Schema({
       message: "Passwords Not Matched!",
     },
   },
+  passwordChangedAt: Date, // used to store the time when the user modified password
+  passwordResetToken: String, // store the token to reset the password
+  passwordResetExpires: Date, // the expiration time of the reset token
   program: { type: mongoose.Schema.Types.ObjectId, ref: "programs" },
   courses: [{ type: mongoose.Schema.Types.ObjectId, ref: "courses" }],
   created: { type: Date, default: Date.now },
@@ -106,15 +112,30 @@ usersSchema.pre("save", async function (next) {
 
 /**
  * Create a function that can be implemented in all documents in a specific collection.
- * @param {*} candidatePassword 
- * @param {*} userPassword 
- * @returns 
+ * @param {*} candidatePassword
+ * @param {*} userPassword
+ * @returns
  */
 usersSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+usersSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString("hex");
+
+  // generate the crypto reset token
+  this.passwordResetToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  // set the expiration time of the reset token
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+
+  return resetToken;
 };
 
 const users = mongoose.model("users", usersSchema);
