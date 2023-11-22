@@ -66,6 +66,8 @@ To get started with the application, you will need to have the following install
 2. Install all NPM Packages:
    ```sh
    npm install
+   or
+   npm i
    ```
 3. Start the Server:
    ```sh
