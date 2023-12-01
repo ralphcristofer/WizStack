@@ -8,8 +8,7 @@ dotenv.config({ path: "./config.env" });
 
 /**
  * Connect to MongoDB Atlas database.
- * @returns {Promise<void>}
-
+ * @returns {Promise<void>} Promise object represents the connection to the database.
  */
 const connectDb = async () => {
   try {

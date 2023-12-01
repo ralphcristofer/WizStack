@@ -5,7 +5,11 @@ import AppError from "../util/AppError.mjs";
 import catchAsync from "../util/catchAsync.mjs";
 import { promisify } from "util";
 
-// Create a function to generate a token
+/**
+ * generateToken function is used to generate a token for the user.
+ * @param {*} id The id of the user.
+ * @returns A token for the user.
+ */
 const generateToken = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
@@ -13,14 +17,24 @@ const generateToken = (id) => {
 };
 
 /**
- * Saving the Refresh Token
+ * refreshToken function is used to refresh the token for the user.
+ * @param {*} id The id of the user.
+ * @returns A token for the user.
  */
+const refreshToken = (id) => {
+  return jwt.sign({ id: id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN_FOR_REFRESH_TOKEN,
+  });
+}
 
-/***
- * User Sign up
+/**
+ * Sign up a new user.
+ * @param {*} req The request object.
+ * @param {*} res The response object.
+ * @param {*} next The next middleware.
  */
 const signUp = catchAsync(async (req, res, next) => {
-  //produce id in database
+  // Create a new user based on the request body
   const newUser = await users.create({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
@@ -42,7 +56,7 @@ const signUp = catchAsync(async (req, res, next) => {
       message: err,
     }); */
 
-  //  After creating a new user, a corresponding new token is also created
+  //  After successful user creation, generate a token for the user
   const token = generateToken(newUser._id);
   res.status(200).json({
     status: "Success for Signing Up!",
@@ -60,8 +74,6 @@ const signUp = catchAsync(async (req, res, next) => {
  * @param {*} res
  */
 const signIn = catchAsync(async (req, res, next) => {
-  // TODO: Complete sign-in Logic
-
   //Retrieve email and password from the user
   const { email, password } = req.body;
 
@@ -83,9 +95,11 @@ const signIn = catchAsync(async (req, res, next) => {
 });
 
 /**
- * The 'Protect' function is used to protect the specific router can only be accessed by specific user
+ * Protect function is used to protect the specific router can only be accessed by specific user.
+ * @param {*} req The request object.
+ * @param {*} res The response object.
+ * @param {*} next The next middleware.
  */
-
 const protect = catchAsync(async (req, res, next) => {
   // Getting the token to see if the user is there
   let token;
@@ -121,11 +135,12 @@ const protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-/***
- *
- * User roles and authorizations
- */
 
+/**
+ * Restrict the user to access the route based on his role.
+ * @param  {...any} roles Depending on the role, the user can access different routes.
+ * @returns A middleware function
+ */
 const restrictTo = (...roles) => {
   return (req, res, next) => {
     //roles is an array: ["administrator", 'lead-guide']
@@ -141,11 +156,13 @@ const restrictTo = (...roles) => {
 };
 
 /**
- * Forgot Password
+ * If User forgot password, he can reset his password by using his email.
+ * @param {*} req The request object.
+ * @param {*} res The response object.
+ * @param {*} next The next middleware.
  */
-
 const forgotPassword = catchAsync(async (req, res, next) => {
-  // Get user based on posted email
+  // Get user information based on email
   const user = await users.findOne({ email: req.body.email });
   if (!user) {
     return next(
@@ -153,7 +170,7 @@ const forgotPassword = catchAsync(async (req, res, next) => {
     );
   }
 
-  // Generate the random reset token
+  // Generate random reset token
   const resetToken = user.createPasswordResetToken();
 
   // Properties of 'passwordResetToken' and 'passwordResetExpired' need to be saved to the datebase
@@ -163,15 +180,13 @@ const forgotPassword = catchAsync(async (req, res, next) => {
     status: "The reset token has been sent your registered email address",
     resetToken: resetToken,
   });
-
-  // Sent it to user's email
 });
 
 /**
  * Sign out a user.
  * @todo Complete sign-out logic.
- * @param {*} req
- * @param {*} res
+ * @param {*} req The request object.
+ * @param {*} res The response object.
  */
 const signOut = catchAsync(async (req, res, next) => {
   const email = req.email;
