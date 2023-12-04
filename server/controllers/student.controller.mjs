@@ -10,7 +10,6 @@ const httpStatusHandler = new HttpStatus();
  * @param {*} res
  */
 const createUser = async (req, res) => {
-  // TODO: Edit Logic to Create a User
   const { firstName, lastName, email, password } = req.body;
 
   try {
@@ -39,7 +38,6 @@ const createUser = async (req, res) => {
  * @param {*} res
  */
 const listAllUsers = async (req, res) => {
-  // TODO: Edit Logic to List all Users
   try {
     const userList = await users.find({});
 
@@ -51,6 +49,7 @@ const listAllUsers = async (req, res) => {
       err.message
     );
     res.status(500).json({ error: "Internal server error" });
+
   }
 };
 
@@ -61,13 +60,9 @@ const listAllUsers = async (req, res) => {
  * @param {*} res
  */
 const fetchUser = async (req, res) => {
-  // TODO: Edit Logic to Fetch a User
-  //const { id } = req.params;
-
   try {
     const user = await users.findById(req.params.userId);
 
-    //res.json(user);
     res.status(200).json({
       status: "Successfully find the user",
       data: {
@@ -80,7 +75,7 @@ const fetchUser = async (req, res) => {
       err.statusCode,
       err.message
     );
-    // res.status(500).json({ error: "Internal server error" });
+
   }
 };
 
@@ -91,10 +86,6 @@ const fetchUser = async (req, res) => {
  * @param {*} res
  */
 const updateUser = async (req, res) => {
-  // TODO : Edit Logic to Update a User
-  /* const { firstName, lastName, email, password } = req.body;
-  const { id } = req.params; */
-
   try {
     const user = await users.findByIdAndUpdate(req.params.userId, req.body, {
       new: true,
@@ -109,6 +100,7 @@ const updateUser = async (req, res) => {
       err.message
     );
     res.status(500).json({ error: "Internal server error" });
+
   }
 };
 
@@ -119,9 +111,6 @@ const updateUser = async (req, res) => {
  * @param {*} res
  */
 const deleteUser = async (req, res) => {
-  // TODO: Edit Logic to Delete a User
-  //const { id } = req.params;
-
   try {
     const user = await users.findByIdAndDelete(req.params.userId);
 
@@ -133,6 +122,7 @@ const deleteUser = async (req, res) => {
       err.message
     );
     res.status(500).json({ error: "Internal server error" });
+
   }
 };
 
