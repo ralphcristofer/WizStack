@@ -26,8 +26,8 @@ userRouter.post("/users", createUser);
 /**
  * GET :: /users
  * @description Lists all Users from the database.
+ * @auth Only accessible to authenticated users.
  */
-//Add 'protect' middleware to make sure non-logged in users can not access to this function
 userRouter.get("/users", protect, restrictTo("administrator"), listAllUsers);
 
 /**
@@ -45,6 +45,7 @@ userRouter.patch("/users/:userId", updateUser);
 /**
  * DELETE :: /users/:userId
  * @description Deletes a single User from the database.
+ * @auth Only accessible to authenticated users.
  */
 userRouter.delete(
   "/users/:userId",
