@@ -3,11 +3,12 @@
 import dotenv from "dotenv";
 import process from "process";
 import express from "express";
+import cors from "cors";
 import connectDb from "./config/config.mjs";
 import { HttpStatus } from "./util/dialogInvoke.mjs";
 
 // import { signIn, signOut } from './src/db/controllers/auth.controller.mjs';
-// import { createUser, listAllUsers, fetchUser, updateUser, deleteUser } from './controllers/student.controller.mjs';
+import { createUser, listAllUsers, fetchUser, updateUser, deleteUser } from './controllers/student.controller.mjs';
 // import users from './src/db/models/student.model.mjs';
 // import authRouter from './src/routes/api/auth.routes.mjs';
 
@@ -31,7 +32,6 @@ app.get("/wizsecret", (req, res) => {
   res.json({ message: "Wizstack Student Management App" });
 });
 
-// app.get('/users', listAllUsers);
 app.use("/api", userRouter);
 app.use("/api", authRouter);
 // app.use('/auth', authRouter);
