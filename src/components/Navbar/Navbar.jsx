@@ -3,8 +3,9 @@ import "./navbar.module.css";
 
 const Navbar = () => { 
     return (
-       <>
-       </>
+       <div>
+        navbar
+       </div>
     );
 }
 

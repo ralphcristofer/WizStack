@@ -5,11 +5,13 @@ import { createBrowserRouter, Route, createRoutesFromElements, Link, Outlet, Rou
 import { Home } from './pages/Home/index.jsx';
 import { About } from './pages/About/index.jsx';
 import { Contact } from './pages/Contact/index.jsx';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Layout from './layout/ex_layout.jsx';
 
 const App = () => {
   const router = createBrowserRouter(
      createRoutesFromElements(
-        <Route path="/" element={<Root />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
