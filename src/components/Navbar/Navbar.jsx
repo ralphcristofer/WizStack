@@ -34,6 +34,7 @@ const Navbar = () => {
                 <Link to={'/dashboard'}>DASHBOARD</Link>
                 <Link to={'/about'}>ABOUT</Link>
                 <Link to={'/contact'}>CONTACT</Link>
+                <Link to={'/'}>HOME</Link>
             </Flex>
             <Flex gap="3"> 
                 {isAdmin && 
@@ -50,9 +51,9 @@ const Navbar = () => {
                     </>
                 ) : (
                     <>
-                    <Link to={'/signin'}>SIGN IN</Link>
+                    <Link to={'/signup'}>SIGN UP</Link>
                     <div>|</div>
-                    <Link to={'/register'}>REGISTER</Link>
+                    <Link to={'/signin'}>SIGN IN</Link>
                     </>
                 )}
             </Flex>

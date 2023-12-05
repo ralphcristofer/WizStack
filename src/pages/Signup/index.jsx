@@ -1,9 +1,9 @@
-import "./signup.css";
+import "./signup.module.css";
 import axios from "axios";
 import { useState } from "react";
 import React from "react";
 
-function SignUp() {
+export const SignUp = () => {
   const baseURL = "http://localhost:3000";
   const axiosInstance = axios.create({ baseURL });
 
@@ -140,5 +140,3 @@ function SignUp() {
     </div>
   );
 }
-
-export default SignUp;

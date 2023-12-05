@@ -5,15 +5,14 @@ import {
   createBrowserRouter,
   Route,
   createRoutesFromElements,
-  Link,
   Outlet,
   RouterProvider,
 } from "react-router-dom";
 import { Home } from "./pages/Home/index.jsx";
 import { About } from "./pages/About/index.jsx";
 import { Contact } from "./pages/Contact/index.jsx";
-import SignUp from "./components/SignUp/SignUp.jsx";
-import LoginForm from "./components/Login/Login.jsx";
+import { SignUp } from "./pages/Signup/index.jsx";
+import { SignIn } from "./pages/Signin/index.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -23,7 +22,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<LoginForm />}></Route>
+        <Route path="/signin" element={<SignIn />}></Route>
       </Route>
     )
   )

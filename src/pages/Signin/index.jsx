@@ -1,9 +1,9 @@
-import "./login.css";
+import "./signin.module.css";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function LoginForm() {
+export const SignIn = () => {
   const navigate = useNavigate();
 
   const baseURL = "http://localhost:3000";
@@ -113,5 +113,3 @@ function LoginForm() {
     </div>
   );
 }
-
-export default LoginForm;
