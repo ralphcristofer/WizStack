@@ -12,7 +12,11 @@ import {
 import { Home } from "./pages/Home/index.jsx";
 import { About } from "./pages/About/index.jsx";
 import { Contact } from "./pages/Contact/index.jsx";
+<<<<<<< HEAD
 import SignUp from "./components/SignUp/SignUp.jsx";
+=======
+import LoginForm from "./components/Login/Login.jsx";
+>>>>>>> origin/fend-submain-chk
 
 const App = () => {
   const router = createBrowserRouter(
@@ -21,7 +25,11 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+<<<<<<< HEAD
         <Route path="/signup" element={<SignUp />} />
+=======
+        <Route path="/login" element={<LoginForm />}></Route>
+>>>>>>> origin/fend-submain-chk
       </Route>
     )
   );
@@ -52,7 +60,11 @@ const Root = () => {
 
       <div>
         <Outlet />
+<<<<<<< HEAD
         <SignUp />
+=======
+        <LoginForm />
+>>>>>>> origin/fend-submain-chk
       </div>
     </>
   );
