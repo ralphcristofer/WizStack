@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import './navbar.module.css';
 import Logo from '../../assets/Wizstack Title.png'
-import { Flex, Text, Button, Link, Box } from '@radix-ui/themes';
-import { UserContext } from '../../contexts/UserContext.jsx';
-
-
+import { Flex } from '@radix-ui/themes';
+import { UserContext } from '../../contexts/UserContext.jsx'; // could be obtain from session
+import { Link } from 'react-router-dom';
 
 const navbarStyle = {
     position: 'fixed',
@@ -21,7 +20,10 @@ const logoStyle = {
 }
 
 const Navbar = () => { 
+    // some variables from the context 
     const {User} = useContext(UserContext);
+    const isAdmin = User?.role === 'admin';
+    const isAuthenticated = !!User;
 
     return (
         <Flex direction="row" justify="between" align="center" style={navbarStyle}> 
@@ -29,13 +31,30 @@ const Navbar = () => {
                 <img src={Logo} alt="WizStack Title" style={logoStyle} />
             </Link>
             <Flex gap="5">
-                <Link to={'/'}>Dashboard</Link>
-                <Link to={'/'}>About</Link>
-                <Link to={'/'}>Contact</Link>
+                <Link to={'/dashboard'}>DASHBOARD</Link>
+                <Link to={'/about'}>ABOUT</Link>
+                <Link to={'/contact'}>CONTACT</Link>
             </Flex>
-            <Flex gap="3">
-                <Link to={'/'}>Sign In</Link>
-                <Link to={'/'}>Register</Link>
+            <Flex gap="3"> 
+                {isAdmin && 
+                    <>
+                    <Link to={'/users'}>USERS</Link>
+                    <div>|</div>
+                    </>
+                }
+                {isAuthenticated ? (
+                    <>
+                    <Link to={'/profile'}>PROFILE</Link>
+                    <div>|</div>
+                    <Link to={'/signout'}>SIGN OUT</Link>
+                    </>
+                ) : (
+                    <>
+                    <Link to={'/signin'}>SIGN IN</Link>
+                    <div>|</div>
+                    <Link to={'/register'}>REGISTER</Link>
+                    </>
+                )}
             </Flex>
        </Flex>
     );
