@@ -2,8 +2,10 @@ import "./signin.module.css";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../contexts/UserContext";
 
 export const SignIn = () => {
+  const { signin } = useUser();
   const navigate = useNavigate();
 
   const baseURL = "http://localhost:3000";
@@ -36,6 +38,8 @@ export const SignIn = () => {
       .then((response) => {
         console.log(response);
         window.alert(response.data.status);
+        const token = response.data.token;
+        signin(token);
         navigate("/");
       })
       .catch((err) => console.log(err));
