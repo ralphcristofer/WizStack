@@ -6,11 +6,10 @@ import { UserContext } from '../../contexts/UserContext.jsx'; // could be obtain
 import { Link } from 'react-router-dom';
 
 const navbarStyle = {
-    position: 'fixed',
     top: 0,
     left: 0,
     width: '100%',
-    padding: '20px',
+    padding: '15px',
     background: 'var(--gray-a2)', 
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   };
