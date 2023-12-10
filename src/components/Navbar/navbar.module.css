@@ -1,0 +1,20 @@
+.navbar_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: var(--gray-a2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 50px;
+}
+
+.navbar_links a {
+    margin-right: 15px;
+}
+
+.navbar_actions a {
+    margin-right: 15px;
+}
