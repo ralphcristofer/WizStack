@@ -8,7 +8,7 @@ export const Home = () => {
         <>
             <Navbar />
                 { /* Home Section */ }
-                <main>
+                <main class="bg-gray-100">
                     <div className="relative overflow-hidden">
                         <div aria-hidden="true" class="flex absolute -top-96 start-1/2 transform -translate-x-1/2">
                             <div class="bg-gradient-to-r from-red-500 to-orange-300 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] dark:from-violet-900/50 dark:to-purple-900"></div>
@@ -47,18 +47,38 @@ export const Home = () => {
                         </div>
                     </div>
 
-                    <section className="relative z-10 max-w-2xl text-center mx-auto">
+                    <section className="relative z-10 max-w-3xl text-center mx-auto">
                         <h1 className="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl">
                             What Makes Wizstack a Good Choice?
                         </h1>
 
                         { /* Feature Cards & Information */ }
-                        <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 mt-16">
-                            <Card title="Easy to Use" description="Wizstack is easy to use and intuitive. It is designed to be used by students of all ages." buttonText="Learn More" />
-                            <Card title="Feature 2" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, tortor eget interdum scelerisque, diam odio vulputate lectus, eu blandit sem nunc sit amet nisi." buttonText="Learn More" />
-                            <Card title="Feature 3" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, tortor eget interdum scelerisque, diam odio vulputate lectus, eu blandit sem nunc sit amet nisi." buttonText="Learn More" />
+                        <div class="flex flex-wrap justify-center mt-16 -mx-4">
+                            <div className="w-full lg:w-1/3 md:w-1/2 px-4">
+                                <Card 
+                                    title="Easy to Use" 
+                                    description="Wizstack is easy to use and intuitive. It is designed to be used by students of all ages." 
+                                    buttonText="Learn More" 
+                                />
+                            </div>
+
+                            <div className="w-full lg:w-1/3 md:w-1/2 px-4">
+                                <Card 
+                                    title="Simple & Elegent Dashboard" 
+                                    description="Wizstack provides a simple and elegant dashboard to use for students." 
+                                    buttonText="Learn More" 
+                                />
+                            </div>
+
+                            <div className="w-full lg:w-1/3 md:w-1/2 px-4">
+                                <Card 
+                                    title="Extension to Student Workflow" 
+                                    description="Students who use wizstack often consider it to be an extension to their workflow and studying." 
+                                    buttonText="Learn More" 
+                                />
+                            </div>
                         </div>
-                    </section>       
+                    </section>
                 </main>
             <Footer />
         </>
