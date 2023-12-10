@@ -8,10 +8,11 @@ import { promisify } from "util";
 /**
  * generateToken function is used to generate a token for the user.
  * @param {*} id The id of the user.
+ * @param {*} role The role of the user.
  * @returns A token for the user.
  */
-const generateToken = (id) => {
-  return jwt.sign({ id: id }, process.env.JWT_SECRET, {
+const generateToken = (id, role) => {
+  return jwt.sign({ id, role }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
@@ -19,10 +20,11 @@ const generateToken = (id) => {
 /**
  * refreshToken function is used to refresh the token for the user.
  * @param {*} id The id of the user.
+ * @param {*} role The role of the user.
  * @returns A token for the user.
  */
-const refreshToken = (id) => {
-  return jwt.sign({ id: id }, process.env.JWT_SECRET, {
+const refreshToken = (id, role) => {
+  return jwt.sign({ id, role }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN_FOR_REFRESH_TOKEN,
   });
 }
@@ -57,7 +59,7 @@ const signUp = catchAsync(async (req, res, next) => {
     }); */
 
   //  After successful user creation, generate a token for the user
-  const token = generateToken(newUser._id);
+  const token = generateToken(newUser._id, newUser.role);
   res.status(200).json({
     status: "Success for Signing Up!",
     token,
@@ -87,7 +89,7 @@ const signIn = catchAsync(async (req, res, next) => {
     return next((new AppError("Incorrect Email and Password!"), 401));
   }
 
-  const token = generateToken(user._id);
+  const token = generateToken(user._id, user.role);
   res.status(200).json({
     status: "Successfully Logged In!",
     token,
