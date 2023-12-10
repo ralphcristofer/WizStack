@@ -28,16 +28,9 @@ const App = () => {
   )
   
   return (
-    <Theme
-      appearance="dark"
-      accentColor="tomato"
-      grayColor="mauve"
-      radius="large"
-    >
-      <div className="App">
+    <div className="App">
         <RouterProvider router={router} />
-      </div>
-    </Theme>
+    </div>
   );
 };
 
@@ -46,8 +39,6 @@ const Root = () => {
     <>
       <div>
         <Outlet />
-        {/* <SignUp />
-        <LoginForm /> */}
       </div>
     </>
   );

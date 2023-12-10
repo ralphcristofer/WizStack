@@ -13,8 +13,6 @@ const userRouter = express.Router();
 /**
  * @module routes/api/users
  * @description ExpressJS router for /api/users routes.
- *
- * TODO: This is a template where you will do back-end routes here.
  */
 
 /**
