@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './navbar.module.css';
 import Logo from '../../assets/Wizstack Title.png'
 import { Flex } from '@radix-ui/themes';
-import { UserContext } from '../../contexts/UserContext.jsx'; // could be obtain from session
+import { useUser } from '../../contexts/UserContext.jsx';
 import { Link } from 'react-router-dom';
 
 const navbarStyle = {
@@ -20,9 +20,9 @@ const logoStyle = {
 
 const Navbar = () => { 
     // some variables from the context 
-    const {User} = useContext(UserContext);
-    const isAdmin = User?.role === 'admin';
-    const isAuthenticated = !!User;
+    const {user, signout} = useUser();
+    const isAdmin = user?.role === 'admin';
+    const isAuthenticated = !!user;
 
     return (
         <Flex direction="row" justify="between" align="center" style={navbarStyle}> 
@@ -46,7 +46,7 @@ const Navbar = () => {
                     <>
                     <Link to={'/profile'}>PROFILE</Link>
                     <div>|</div>
-                    <Link to={'/signout'}>SIGN OUT</Link>
+                    <Link to={'/'} onClick={signout}>SIGN OUT</Link>
                     </>
                 ) : (
                     <>
