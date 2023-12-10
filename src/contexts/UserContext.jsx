@@ -1,18 +1,34 @@
-import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
-export const UserContext = createContext({});
+// Create a context to manage user-related state and actions
+const UserContext = createContext();
 
-export function UserContextProvider({children}) {
+export const UserProvider = ({ children }) => {
+    // State to hold user information
     const [user, setUser] = useState(null);
-    useEffect(() => {
-        if (!user) {
-            axios.get('/profile')
-        }
-    }, []);
-    return(
-        <UserContext.Provider value={{user, setUser}}>
+
+    // Function to handle user signin
+    const signin = (token) => {
+        // Decode the token to get user data and set user with data
+        const decodedUser = jwtDecode(token);
+        setUser(decodedUser);
+    }
+
+    // Function to handle user signout
+    const signout = () => {
+        setUser(null);
+    };
+
+    // Provide the user state and functions to the components within the context
+    return (
+        <UserContext.Provider value={{user, signin, signout}}>
             {children}
         </UserContext.Provider>
     );
+};
+
+// Hook to easily access the user context within components
+export const useUser = () => {
+    return useContext(UserContext);
 }

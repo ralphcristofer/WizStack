@@ -13,6 +13,7 @@ import { About } from "./pages/About/index.jsx";
 import { Contact } from "./pages/Contact/index.jsx";
 import { SignUp } from "./pages/Signup/index.jsx";
 import { SignIn } from "./pages/Signin/index.jsx";
+import { UserProvider } from "./contexts/UserContext.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -29,8 +30,10 @@ const App = () => {
   
   return (
     <div className="App">
+      <UserProvider>
         <RouterProvider router={router} />
-    </div>
+      </UserProvider>
+    </div>          
   );
 };
 
