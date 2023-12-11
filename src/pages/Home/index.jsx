@@ -141,10 +141,10 @@ export const Home = () => {
                                             />
                                         </svg>
                                         </div>
-                                        <h6 className="mb-2 font-semibold leading-5">The quick fox</h6>
+                                        <h6 className="mb-2 font-semibold leading-5">Student Centric</h6>
                                         <p className="mb-3 text-sm text-gray-900">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                        accusantium rem aperiam, eaque ipsa quae. Sit error voluptatem.
+                                            Our management system revolves around student needs. We ensure that each student
+                                            will benefit and be able to use our system to their advantage.
                                         </p>
                                     </div>
                                 </div>
@@ -165,11 +165,10 @@ export const Home = () => {
                                             />
                                         </svg>
                                         </div>
-                                        <h6 className="mb-2 font-semibold leading-5">Leverage agile</h6>
+                                        <h6 className="mb-2 font-semibold leading-5">Simple Design</h6>
                                         <p className="mb-3 text-sm text-gray-900">
-                                        Storage shed, troughs feed bale manure, is garden wheat oats at
-                                        augers. Bulls at rose garden cucumbers mice sunflower wheat in
-                                        pig.
+                                            Our management system is simple and easy to use. Each student will be able to
+                                            use our system without any hassle, giving them more time back to study.
                                         </p>
                                     </div>
                                 </div>
@@ -190,10 +189,10 @@ export const Home = () => {
                                             />
                                         </svg>
                                         </div>
-                                        <h6 className="mb-2 font-semibold leading-5">Organically grow</h6>
+                                        <h6 className="mb-2 font-semibold leading-5">Endless Posibilities</h6>
                                         <p className="mb-3 text-sm text-gray-900">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                        accusantium rem aperiam, eaque ipsa quae. Sit error voluptatem.
+                                            As our management system is fully customizable, each student is given endless
+                                            possibilities to customize their experience to their liking.
                                         </p>
                                     </div>
                                 </div>
@@ -214,11 +213,10 @@ export const Home = () => {
                                             />
                                         </svg>
                                         </div>
-                                        <h6 className="mb-2 font-semibold leading-5">Have a good one</h6>
+                                        <h6 className="mb-2 font-semibold leading-5">Timetable Tracker</h6>
                                         <p className="mb-3 text-sm text-gray-900">
-                                        Storage shed, troughs feed bale manure, is garden wheat oats at
-                                        augers. Bulls at rose garden cucumbers mice sunflower wheat in
-                                        pig.
+                                            With our detailed timetable tracker, and alerts that will remind you of your
+                                            next assignment, you will never miss out on anything again.
                                         </p>
                                     </div>
                                 </div>
@@ -239,10 +237,10 @@ export const Home = () => {
                                             />
                                         </svg>
                                         </div>
-                                        <h6 className="mb-2 font-semibold leading-5">Trough pomfret</h6>
+                                        <h6 className="mb-2 font-semibold leading-5">Constant Features</h6>
                                         <p className="mb-3 text-sm text-gray-900">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                        accusantium rem aperiam, eaque ipsa quae. Sit error voluptatem.
+                                            We are constantly updating our management system, adding new features 
+                                            and improving existing ones. Our communities feedback is our top priority.
                                         </p>
                                     </div>
                                 </div>
@@ -263,11 +261,11 @@ export const Home = () => {
                                             />
                                         </svg>
                                         </div>
-                                        <h6 className="mb-2 font-semibold leading-5">Disrupt inspire</h6>
+                                        <h6 className="mb-2 font-semibold leading-5">Completely Free, Forever</h6>
                                         <p className="mb-3 text-sm text-gray-900">
-                                        Storage shed, troughs feed bale manure, is garden wheat oats at
-                                        augers. Bulls at rose garden cucumbers mice sunflower wheat in
-                                        pig.
+                                            Last but not least, our management systems is completely free, and will
+                                            stay that way, forever. We put our values for our students first, and
+                                            we will never change that.
                                         </p>
                                     </div>
                                 </div>
