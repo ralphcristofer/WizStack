@@ -14,6 +14,8 @@ import { Contact } from "./pages/Contact/index.jsx";
 import { SignUp } from "./pages/Signup/index.jsx";
 import { SignIn } from "./pages/Signin/index.jsx";
 import { UserProvider } from "./contexts/UserContext.jsx";
+import { ForgotPassword } from "./pages/ForgotPassword/index.jsx";
+import { ResetPassword } from "./pages/ResetPassword/index.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -24,16 +26,18 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />}></Route>
+        <Route path="/forgot_password" element={<ForgotPassword />} />
+        <Route path="/reset_password" element={<ResetPassword />} />
       </Route>
     )
-  )
-  
+  );
+
   return (
     <div className="App">
       <UserProvider>
         <RouterProvider router={router} />
       </UserProvider>
-    </div>          
+    </div>
   );
 };
 

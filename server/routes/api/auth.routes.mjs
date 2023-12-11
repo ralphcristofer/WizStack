@@ -4,6 +4,10 @@ import {
   signIn,
   signOut,
   forgotPassword,
+  resetPassword,
+  updatePassword,
+  restrictTo,
+  protect,
 } from "./../../controllers/auth.controller.mjs";
 
 const authRouter = express.Router();
@@ -18,6 +22,10 @@ authRouter.post("/auth/signin", signIn);
 
 authRouter.post("/auth/forgotPassword", forgotPassword);
 //authRouter.post("/auth/resetPassword");
+
+authRouter.patch("/auth/resetPassword/:token", resetPassword);
+//authRouter.patch("/auth/resetPassword", resetPassword);
+authRouter.patch("/auth/updateMyPassword", protect, updatePassword);
 
 /**
  * GET :: /auth/signout
