@@ -2,11 +2,13 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import { Card } from "../../components/Card/Card";
+import { Banner } from "../../components/Banner/Banner";
 
 export const Home = () => {
     return (
         <>
             <Navbar />
+                <Banner title="Already a member?" link="/signin" linkTitle="Sign In"/>
                 { /* Home Section */ }
                 <main class="bg-gray-100">
                     <div className="relative overflow-hidden">
@@ -47,35 +49,228 @@ export const Home = () => {
                         </div>
                     </div>
 
+                    { /* Expanded Layout & Features */}
+                    <section className="text-left">
+                        <div className="sm:px-28">
+                            <div className="relative flex items-center w-full">
+                                <div className="relative items-center w-full px-5 mx-auto md:px-12 lg:px-16 max-w-7xl">
+                                    <div className="relative flex-col items-start m-auto align-middle">
+                                        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-24">
+                                            <div className="relative items-center gap-12 m-auto lg:inline-flex md:order-first">
+                                                <div className="max-w-xl text-center lg:text-left">
+                                                    <div>
+                                                        <p className="text-3xl font-semibold tracking-tight text-[#201515] sm:text-5xl">
+                                                            Student Management Software
+                                                        </p>
+                                                        <p className="max-w-xl mt-4 text-base tracking-tight text-gray-600">
+                                                            Are you have trouble managing your time? Do you want to study more efficiently? Our student management system is the perfect solution for you. With tailored features
+                                                            for students, we ensure that you will be able to manage your time and study more efficiently for anything.
+                                                        </p>
+                                                    </div>
+                                                    <div className="flex justify-center gap-3 mt-10 lg:justify-start">
+                                                        <Link to="/about" className="inline-flex items-center justify-center text-sm font-semibold text-black duration-200 hover:text-orange-500 focus:outline-none focus-visible:outline-gray-600">
+                                                            <span> Read more &nbsp; → </span>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="order-first block w-full mt-12 aspect-square lg:mt-0">
+                                                <img className="object-cover rounded-3xl object-center w-full mx-auto bg-gray-300 lg:ml-auto " alt="hero" src="https://i.pinimg.com/originals/2e/2b/21/2e2b21aeed393403d4620367f9e093f9.gif" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="sm:px-28">
+                            <div className="relative flex items-center w-full">
+                                <div className="relative items-center w-full px-5 mx-auto md:px-12 lg:px-16 max-w-7xl">
+                                    <div className="relative flex-col items-start m-auto align-middle">
+                                        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-24">
+                                            <div className="relative items-center gap-12 m-auto lg:inline-flex md:order-first">
+                                                <div className="max-w-xl text-center lg:text-left">
+                                                    <div>
+                                                        <p className="text-3xl font-semibold tracking-tight text-[#201515] sm:text-5xl">
+                                                            Unlimited Customizability
+                                                        </p>
+                                                        <p className="max-w-xl mt-4 text-base tracking-tight text-gray-600">
+                                                            Our student management system is fully customizable based on your needs, we will ensure for our next update and many more to come that
+                                                            each student will be able to customize their experience to their liking, no matter what.
+                                                        </p>
+                                                    </div>
+                                                    <div className="flex justify-center gap-3 mt-10 lg:justify-start">
+                                                        <Link to="/about" className="inline-flex items-center justify-center text-sm font-semibold text-black duration-200 hover:text-orange-500 focus:outline-none focus-visible:outline-gray-600">
+                                                            <span> Read more &nbsp; → </span>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="order-first block w-full mt-12 aspect-square lg:mt-0">
+                                                <img className="object-cover rounded-3xl object-center w-full mx-auto bg-gray-300 lg:ml-auto " alt="hero" src="https://i.pinimg.com/originals/2e/2b/21/2e2b21aeed393403d4620367f9e093f9.gif" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    { /* Feature Section */ }
                     <section className="relative z-10 max-w-3xl text-center mx-auto">
                         <h1 className="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl">
                             What Makes Wizstack a Good Choice?
                         </h1>
 
-                        { /* Feature Cards & Information */ }
-                        <div class="flex flex-wrap justify-center mt-16 -mx-4">
-                            <div className="w-full lg:w-1/3 md:w-1/2 px-4">
-                                <Card 
-                                    title="Easy to Use" 
-                                    description="Wizstack is easy to use and intuitive. It is designed to be used by students of all ages." 
-                                    buttonText="Learn More" 
-                                />
-                            </div>
-
-                            <div className="w-full lg:w-1/3 md:w-1/2 px-4">
-                                <Card 
-                                    title="Simple & Elegent Dashboard" 
-                                    description="Wizstack provides a simple and elegant dashboard to use for students." 
-                                    buttonText="Learn More" 
-                                />
-                            </div>
-
-                            <div className="w-full lg:w-1/3 md:w-1/2 px-4">
-                                <Card 
-                                    title="Extension to Student Workflow" 
-                                    description="Students who use wizstack often consider it to be an extension to their workflow and studying." 
-                                    buttonText="Learn More" 
-                                />
+                        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+                            <div className="grid row-gap-8 sm:row-gap-0 sm:grid-cols-2 lg:grid-cols-3">
+                                <div className="p-8 border-b sm:border-r">
+                                    <div className="max-w-md text-center">
+                                        <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-orange-500 sm:w-16 sm:h-16">
+                                        <svg
+                                            className="w-8 h-8 text-deep-purple-accent-400 sm:w-12 sm:h-12"
+                                            stroke="currentColor"
+                                            viewBox="0 0 52 52"
+                                        >
+                                            <polygon
+                                            strokeWidth="3"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            fill="none"
+                                            points="29 13 14 29 25 29 23 39 38 23 27 23"
+                                            />
+                                        </svg>
+                                        </div>
+                                        <h6 className="mb-2 font-semibold leading-5">The quick fox</h6>
+                                        <p className="mb-3 text-sm text-gray-900">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                        accusantium rem aperiam, eaque ipsa quae. Sit error voluptatem.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="p-8 border-b lg:border-r">
+                                    <div className="max-w-md text-center">
+                                        <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-orange-500 sm:w-16 sm:h-16">
+                                        <svg
+                                            className="w-8 h-8 text-deep-purple-accent-400 sm:w-12 sm:h-12"
+                                            stroke="currentColor"
+                                            viewBox="0 0 52 52"
+                                        >
+                                            <polygon
+                                            strokeWidth="3"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            fill="none"
+                                            points="29 13 14 29 25 29 23 39 38 23 27 23"
+                                            />
+                                        </svg>
+                                        </div>
+                                        <h6 className="mb-2 font-semibold leading-5">Leverage agile</h6>
+                                        <p className="mb-3 text-sm text-gray-900">
+                                        Storage shed, troughs feed bale manure, is garden wheat oats at
+                                        augers. Bulls at rose garden cucumbers mice sunflower wheat in
+                                        pig.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="p-8 border-b sm:border-r lg:border-r-0">
+                                    <div className="max-w-md text-center">
+                                        <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-orange-500 sm:w-16 sm:h-16">
+                                        <svg
+                                            className="w-8 h-8 text-deep-purple-accent-400 sm:w-12 sm:h-12"
+                                            stroke="currentColor"
+                                            viewBox="0 0 52 52"
+                                        >
+                                            <polygon
+                                            strokeWidth="3"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            fill="none"
+                                            points="29 13 14 29 25 29 23 39 38 23 27 23"
+                                            />
+                                        </svg>
+                                        </div>
+                                        <h6 className="mb-2 font-semibold leading-5">Organically grow</h6>
+                                        <p className="mb-3 text-sm text-gray-900">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                        accusantium rem aperiam, eaque ipsa quae. Sit error voluptatem.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="p-8 border-b lg:border-b-0 lg:border-r">
+                                    <div className="max-w-md text-center">
+                                        <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-orange-500 sm:w-16 sm:h-16">
+                                        <svg
+                                            className="w-8 h-8 text-deep-purple-accent-400 sm:w-12 sm:h-12"
+                                            stroke="currentColor"
+                                            viewBox="0 0 52 52"
+                                        >
+                                            <polygon
+                                            strokeWidth="3"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            fill="none"
+                                            points="29 13 14 29 25 29 23 39 38 23 27 23"
+                                            />
+                                        </svg>
+                                        </div>
+                                        <h6 className="mb-2 font-semibold leading-5">Have a good one</h6>
+                                        <p className="mb-3 text-sm text-gray-900">
+                                        Storage shed, troughs feed bale manure, is garden wheat oats at
+                                        augers. Bulls at rose garden cucumbers mice sunflower wheat in
+                                        pig.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="p-8 border-b sm:border-b-0 sm:border-r">
+                                    <div className="max-w-md text-center">
+                                        <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-orange-500 sm:w-16 sm:h-16">
+                                        <svg
+                                            className="w-8 h-8 text-deep-purple-accent-400 sm:w-12 sm:h-12"
+                                            stroke="currentColor"
+                                            viewBox="0 0 52 52"
+                                        >
+                                            <polygon
+                                            strokeWidth="3"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            fill="none"
+                                            points="29 13 14 29 25 29 23 39 38 23 27 23"
+                                            />
+                                        </svg>
+                                        </div>
+                                        <h6 className="mb-2 font-semibold leading-5">Trough pomfret</h6>
+                                        <p className="mb-3 text-sm text-gray-900">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                        accusantium rem aperiam, eaque ipsa quae. Sit error voluptatem.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="p-8">
+                                    <div className="max-w-md text-center">
+                                        <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-orange-500 sm:w-16 sm:h-16">
+                                        <svg
+                                            className="w-8 h-8 text-deep-purple-accent-400 sm:w-12 sm:h-12"
+                                            stroke="currentColor"
+                                            viewBox="0 0 52 52"
+                                        >
+                                            <polygon
+                                            strokeWidth="3"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            fill="none"
+                                            points="29 13 14 29 25 29 23 39 38 23 27 23"
+                                            />
+                                        </svg>
+                                        </div>
+                                        <h6 className="mb-2 font-semibold leading-5">Disrupt inspire</h6>
+                                        <p className="mb-3 text-sm text-gray-900">
+                                        Storage shed, troughs feed bale manure, is garden wheat oats at
+                                        augers. Bulls at rose garden cucumbers mice sunflower wheat in
+                                        pig.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
