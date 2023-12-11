@@ -5,7 +5,7 @@ import { useUser } from '../../contexts/UserContext.jsx';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    // Variables from the context
+    // Context Variables
     const { user, signout } = useUser();
     const isAdmin = user?.role === 'administrator';
     const isAuthenticated = !!user;
