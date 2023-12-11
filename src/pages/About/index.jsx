@@ -6,8 +6,14 @@ export const About = () => {
     return (
         <div>
             <Navbar />
-            <h1>About Route</h1>
+            
+            <section>
+                
+            </section>
+
             <Footer />
         </div>
     )
 }
+
+export default About;
