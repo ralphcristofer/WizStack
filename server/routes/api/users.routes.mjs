@@ -26,7 +26,8 @@ userRouter.post("/users", createUser);
  * @description Lists all Users from the database.
  * @auth Only accessible to authenticated users.
  */
-userRouter.get("/users", protect, restrictTo("administrator"), listAllUsers);
+//userRouter.get("/users", protect, restrictTo("administrator"), listAllUsers);
+userRouter.get("/users", listAllUsers);
 
 /**
  * GET :: /users/:userId
@@ -45,11 +46,12 @@ userRouter.patch("/users/:userId", updateUser);
  * @description Deletes a single User from the database.
  * @auth Only accessible to authenticated users.
  */
-userRouter.delete(
-  "/users/:userId",
-  protect,
-  restrictTo("administrator"),
-  deleteUser
-);
+// userRouter.delete(
+//   "/users/:userId",
+//   protect,
+//   restrictTo("administrator"),
+//   deleteUser
+// );
+userRouter.delete("/users/:userId", deleteUser);
 
 export default userRouter;

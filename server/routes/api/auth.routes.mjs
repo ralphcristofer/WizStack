@@ -4,6 +4,8 @@ import {
   signIn,
   signOut,
   forgotPassword,
+  protect,
+  restrictTo,
 } from "./../../controllers/auth.controller.mjs";
 
 const authRouter = express.Router();

@@ -85,9 +85,9 @@ const usersSchema = new mongoose.Schema({
       message: "Passwords Not Matched!",
     },
   },
-  passwordChangedAt: Date, // used to store the time when the user modified password
-  passwordResetToken: String, // store the token to reset the password
-  passwordResetExpires: Date, // the expiration time of the reset token
+  passwordChangedAt: { type: Date }, // used to store the time when the user modified password
+  passwordResetToken: { type: String }, // store the token to reset the password
+  passwordResetExpires: { type: Date }, // the expiration time of the reset token
   program: { type: mongoose.Schema.Types.ObjectId, ref: "programs" },
   courses: [{ type: mongoose.Schema.Types.ObjectId, ref: "courses" }],
   created: { type: Date, default: Date.now },
@@ -131,6 +131,8 @@ usersSchema.methods.createPasswordResetToken = function () {
     .createHash("sha256")
     .update(resetToken)
     .digest("hex");
+
+  console.log({ resetToken }, this.passwordResetToken);
 
   // set the expiration time of the reset token
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000;

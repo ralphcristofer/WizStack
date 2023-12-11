@@ -17,6 +17,17 @@ const generateToken = (id, role) => {
   });
 };
 
+const createSendToken = (user, statusCode, res) => {
+  const token = generateToken(user._id);
+  res.status(statusCode).json({
+    status: "Success",
+    token,
+    data: {
+      user,
+    },
+  });
+};
+
 /**
  * refreshToken function is used to refresh the token for the user.
  * @param {*} id The id of the user.
@@ -27,7 +38,7 @@ const refreshToken = (id, role) => {
   return jwt.sign({ id, role }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN_FOR_REFRESH_TOKEN,
   });
-}
+};
 
 /**
  * Sign up a new user.
@@ -59,14 +70,7 @@ const signUp = catchAsync(async (req, res, next) => {
     }); */
 
   //  After successful user creation, generate a token for the user
-  const token = generateToken(newUser._id, newUser.role);
-  res.status(200).json({
-    status: "Success for Signing Up!",
-    token,
-    data: {
-      user: newUser,
-    },
-  });
+  createSendToken(newUser, 201, res);
 });
 
 /**
@@ -89,11 +93,7 @@ const signIn = catchAsync(async (req, res, next) => {
     return next((new AppError("Incorrect Email and Password!"), 401));
   }
 
-  const token = generateToken(user._id, user.role);
-  res.status(200).json({
-    status: "Successfully Logged In!",
-    token,
-  });
+  createSendToken(user, 200, res);
 });
 
 /**
@@ -136,7 +136,6 @@ const protect = catchAsync(async (req, res, next) => {
   req.user = freshUser;
   next();
 });
-
 
 /**
  * Restrict the user to access the route based on his role.
@@ -183,6 +182,13 @@ const forgotPassword = catchAsync(async (req, res, next) => {
     resetToken: resetToken,
   });
 });
+
+/**
+ * If User forgot password, he can reset his password by using his email.
+ * @param {*} req The request object.
+ * @param {*} res The response object.
+ * @param {*} next The next middleware.
+ */
 
 /**
  * Sign out a user.

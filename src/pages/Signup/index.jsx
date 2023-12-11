@@ -47,16 +47,48 @@ export const SignUp = () => {
       });
   };
   return (
-    <div class="container">
-      <div class="card">
-        <div class="card_title">
+    <div
+      class="container"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        backgroundColor: "#f0f0f0",
+      }}
+    >
+      <div
+        class="card"
+        style={{
+          maxWidth: "500px",
+          width: "90%",
+          margin: "20px",
+          padding: "20px",
+          backgroundColor: "#fff",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          borderRadius: "10px",
+        }}
+      >
+        <div
+          class="card_title"
+          style={{ marginBottom: "20px", textAlign: "center" }}
+        >
           <h1>Create Account</h1>
           <span>
-            Already have an account? <a href="login">Sign In</a>
+            Already have an account?{" "}
+            <a
+              href="login"
+              style={{ color: "#007bff", textDecoration: "none" }}
+            >
+              Sign In
+            </a>
           </span>
         </div>
         <div class="form">
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: "flex", flexDirection: "column", gap: "15px" }}
+          >
             <input
               type="text"
               name="firstName"
@@ -64,6 +96,12 @@ export const SignUp = () => {
               placeholder="First Name"
               value={userData.firstName}
               onChange={handleInputChange}
+              style={{
+                padding: "10px",
+                border: "1px solid #ddd",
+                borderRadius: "4px",
+                fontSize: "16px",
+              }}
             />
             <input
               type="text"
@@ -72,6 +110,12 @@ export const SignUp = () => {
               placeholder="Last Name"
               value={userData.lastName}
               onChange={handleInputChange}
+              style={{
+                padding: "10px",
+                border: "1px solid #ddd",
+                borderRadius: "4px",
+                fontSize: "16px",
+              }}
             />
             <input
               type="email"
@@ -80,6 +124,12 @@ export const SignUp = () => {
               id="email"
               value={userData.email}
               onChange={handleInputChange}
+              style={{
+                padding: "10px",
+                border: "1px solid #ddd",
+                borderRadius: "4px",
+                fontSize: "16px",
+              }}
             />
             <input
               type="password"
@@ -88,6 +138,12 @@ export const SignUp = () => {
               id="password"
               value={userData.password}
               onChange={handleInputChange}
+              style={{
+                padding: "10px",
+                border: "1px solid #ddd",
+                borderRadius: "4px",
+                fontSize: "16px",
+              }}
             />
             <input
               type="password"
@@ -95,15 +151,30 @@ export const SignUp = () => {
               placeholder="Confirm Your Password"
               value={userData.confirmPassword}
               onChange={handleInputChange}
+              style={{
+                padding: "10px",
+                border: "1px solid #ddd",
+                borderRadius: "4px",
+                fontSize: "16px",
+              }}
             />
             <input
               type="text"
               name="userName"
-              placehoder="(Optional) User Name"
+              placeholder="(Optional) User Name"
               value={userData.userName}
               onChange={handleInputChange}
+              style={{
+                padding: "10px",
+                border: "1px solid #ddd",
+                borderRadius: "4px",
+                fontSize: "16px",
+              }}
             />
-            <div className="div-radio-role">
+            <div
+              className="div-radio-role"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
               <div className="sub-div-radio">
                 <label for="role_student">Student</label>{" "}
                 <input
@@ -127,16 +198,39 @@ export const SignUp = () => {
                 />
               </div>
             </div>
-            <button type="submit">Sign Up</button>
+            <button
+              type="submit"
+              style={{
+                backgroundColor: "#4CAF50",
+                color: "white",
+                padding: "10px 20px",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+            >
+              Sign Up
+            </button>
           </form>
         </div>
-        <div class="card_terms">
-          <input type="checkbox" name="" id="terms" />{" "}
+        <div
+          class="card_terms"
+          style={{ textAlign: "center", marginTop: "20px" }}
+        >
+          <input
+            type="checkbox"
+            name=""
+            id="terms"
+            style={{ marginRight: "10px" }}
+          />{" "}
           <span>
-            I have read and agree to the <a href="">Terms of Service</a>
+            I have read and agree to the{" "}
+            <a href="" style={{ color: "#007bff", textDecoration: "none" }}>
+              Terms of Service
+            </a>
           </span>
         </div>
       </div>
     </div>
   );
-}
+};
