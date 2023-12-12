@@ -44,7 +44,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <UserProvider>
+      <UserProvider/>
       <RouterProvider router={router} />
     </div>
   );
