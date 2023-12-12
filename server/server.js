@@ -42,10 +42,10 @@ app.get("/wizsecret", (req, res) => {
 app.use("/api", userRouter);
 app.use("/api", authRouter);
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '/')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../public', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '/', 'index.html'));
 });
 
 app.listen(process.env.PORT, () => {
