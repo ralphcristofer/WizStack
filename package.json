@@ -4,9 +4,9 @@
   "version": "1.0.0b",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"nodemon --watch server --exec node server/server.js\"",
-    "prod": "concurrently \"vite\" \"nodemon --watch server --exec node server/server.js\"",
-    "start": "vite build && vite preview",
+    "start": "concurrently \"npm run start:front\" \"npm run start:back\"",
+    "start:front": "vite preview",
+    "start:back": "nodemon server/server.js",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
