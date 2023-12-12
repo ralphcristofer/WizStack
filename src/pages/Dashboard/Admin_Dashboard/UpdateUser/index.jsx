@@ -49,7 +49,6 @@ export const UpdateUser = () => {
         backgroundColor: "#f0f0f0",
       }}
     >
-      <Navbar />
       <div
         class="card"
         style={{

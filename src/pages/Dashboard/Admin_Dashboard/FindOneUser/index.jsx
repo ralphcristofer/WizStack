@@ -116,14 +116,26 @@ export const SearchByID = () => {
             </tr>
           </thead>
           <tbody>
-            <tr style={{ backgroundColor: "#f2f2f2", textAlign: "center" }}>
-              <td style={{ padding: "12px 15px" }}>{stuData._id}</td>
-              <td style={{ padding: "12px 15px" }}>{stuData.role}</td>
-              <td style={{ padding: "12px 15px" }}>{stuData.first_name}</td>
-              <td style={{ padding: "12px 15px" }}>{stuData.last_name}</td>
-              <td style={{ padding: "12px 15px" }}>{stuData.email}</td>
-              <td style={{ padding: "12px 15px" }}>{stuData.user_name}</td>
-              <td style={{ padding: "12px 15px" }}>
+            <tr style={{ backgroundColor: "#f9f9f9", textAlign: "center" }}>
+              <td style={{ padding: "12px 15px", color: "#4d4d4d" }}>
+                {stuData._id}
+              </td>
+              <td style={{ padding: "12px 15px", color: "#4d4d4d" }}>
+                {stuData.role}
+              </td>
+              <td style={{ padding: "12px 15px", color: "#4d4d4d" }}>
+                {stuData.first_name}
+              </td>
+              <td style={{ padding: "12px 15px", color: "#4d4d4d" }}>
+                {stuData.last_name}
+              </td>
+              <td style={{ padding: "12px 15px", color: "#4d4d4d" }}>
+                {stuData.email}
+              </td>
+              <td style={{ padding: "12px 15px", color: "#4d4d4d" }}>
+                {stuData.user_name}
+              </td>
+              <td style={{ padding: "12px 15px", color: "#4d4d4d" }}>
                 {stuData.courses?.join(", ") || "N/A"}
               </td>
             </tr>

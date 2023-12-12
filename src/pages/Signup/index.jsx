@@ -1,10 +1,13 @@
 import axiosInstance from "../../services/axios";
 import { useState } from "react";
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
   // const baseURL = "http://localhost:3000";
   // const axiosInstance = axios.create({ baseURL });
+
+  const navigate = useNavigate();
 
   const [userData, updateUserData] = useState({
     firstName: "",
@@ -24,7 +27,7 @@ export const SignUp = () => {
       [name]: value,
     });
   };
- 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -40,11 +43,18 @@ export const SignUp = () => {
       })
       .then((response) => {
         console.log(response);
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    navigate("/signin");
+  };
+
   return (
     <div
       class="container"
@@ -72,12 +82,13 @@ export const SignUp = () => {
           class="card_title"
           style={{ marginBottom: "20px", textAlign: "center" }}
         >
-          <h1>Create Account</h1>
-          <span>
+          <h1 style={{ color: "gray", fontSize: "20px" }}>Create Account</h1>
+          <span style={{ color: "gray", fontSize: "16px" }}>
             Already have an account?{" "}
             <a
               href="login"
               style={{ color: "#007bff", textDecoration: "none" }}
+              onClick={handleSignIn}
             >
               Sign In
             </a>
@@ -175,7 +186,9 @@ export const SignUp = () => {
               style={{ display: "flex", justifyContent: "center" }}
             >
               <div className="sub-div-radio">
-                <label for="role_student">Student</label>{" "}
+                <label for="role_student" style={{ color: "gray" }}>
+                  Student
+                </label>{" "}
                 <input
                   type="radio"
                   name="role"
@@ -186,7 +199,9 @@ export const SignUp = () => {
                 />
               </div>
               <div className="sub-div-radio">
-                <label for="role_admin">Administrator</label>{" "}
+                <label for="role_admin" style={{ color: "gray" }}>
+                  Administrator
+                </label>{" "}
                 <input
                   type="radio"
                   name="role"
@@ -222,7 +237,7 @@ export const SignUp = () => {
             id="terms"
             style={{ marginRight: "10px" }}
           />{" "}
-          <span>
+          <span style={{ color: "gray", fontSize: "14px" }}>
             I have read and agree to the{" "}
             <a href="" style={{ color: "#007bff", textDecoration: "none" }}>
               Terms of Service

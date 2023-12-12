@@ -8,8 +8,6 @@ import {
   restrictTo,
   resetPassword,
   updatePassword,
-  restrictTo,
-  protect,
 } from "./../../controllers/auth.controller.mjs";
 
 const authRouter = express.Router();
