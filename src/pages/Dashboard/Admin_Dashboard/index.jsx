@@ -130,7 +130,7 @@ function AdminDashBoard() {
             }}
           >
             <a href="#about" onClick={handleFineById}>
-              Fina a Student
+              Find a Student
             </a>
           </li>
           <li
