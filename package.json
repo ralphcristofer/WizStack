@@ -4,10 +4,8 @@
   "version": "1.0.0b",
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "start": "concurrently \"npm run start:front\" \"npm run start:back\"",
-    "start:front": "vite preview",
-    "start:back": "nodemon server/server.js",
+    "build": "vite build && npm install --prefix server",
+    "start": "nodemon server/server.js",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "jest --watchAll --verbose"
