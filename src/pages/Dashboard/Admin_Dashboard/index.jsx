@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import axiosInstance from "../../../services/axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -43,6 +43,10 @@ function AdminDashBoard() {
 
   const handleUpdateById = () => {
     navigate("/update_by_id");
+  };
+
+  const handleBackToHome = (e) => {
+    navigate("/");
   };
 
   useEffect(() => {
@@ -91,6 +95,7 @@ function AdminDashBoard() {
                 padding: "14px 16px",
                 textDecoration: "none",
               }}
+              onClick={handleBackToHome}
             >
               Home
             </a>
@@ -192,15 +197,27 @@ function AdminDashBoard() {
                   textAlign: "center",
                 }}
               >
-                <td style={{ padding: "12px 15px" }}>{student.stu_id}</td>
-                <td style={{ padding: "12px 15px" }}>{student.stu_role}</td>
-                <td style={{ padding: "12px 15px" }}>
+                <td style={{ padding: "12px 15px", color: "gray" }}>
+                  {student.stu_id}
+                </td>
+                <td style={{ padding: "12px 15px", color: "gray" }}>
+                  {student.stu_role}
+                </td>
+                <td style={{ padding: "12px 15px", color: "gray" }}>
                   {student.stu_firstName}
                 </td>
-                <td style={{ padding: "12px 15px" }}>{student.stu_lastName}</td>
-                <td style={{ padding: "12px 15px" }}>{student.stu_email}</td>
-                <td style={{ padding: "12px 15px" }}>{student.stu_userName}</td>
-                <td style={{ padding: "12px 15px" }}>{student.stu_courses}</td>
+                <td style={{ padding: "12px 15px", color: "gray" }}>
+                  {student.stu_lastName}
+                </td>
+                <td style={{ padding: "12px 15px", color: "gray" }}>
+                  {student.stu_email}
+                </td>
+                <td style={{ padding: "12px 15px", color: "gray" }}>
+                  {student.stu_userName}
+                </td>
+                <td style={{ padding: "12px 15px", color: "gray" }}>
+                  {student.stu_courses}
+                </td>
               </tr>
             ))}
           </table>

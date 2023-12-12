@@ -157,20 +157,32 @@ function StudentDashBoard() {
                 className="th_td"
                 key={student._id}
                 style={{
-                  backgroundColor: "#f9f9f9",
+                  backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#d9d9d9",
                   borderBottom: "1px solid #e2e2e2",
                   textAlign: "center",
                 }}
               >
-                <td style={{ padding: "12px 15px" }}>{student.stu_id}</td>
-                <td style={{ padding: "12px 15px" }}>{student.stu_role}</td>
-                <td style={{ padding: "12px 15px" }}>
+                <td style={{ padding: "12px 15px", color: "blue" }}>
+                  {student.stu_id}
+                </td>
+                <td style={{ padding: "12px 15px", color: "blue" }}>
+                  {student.stu_role}
+                </td>
+                <td style={{ padding: "12px 15px", color: "blue" }}>
                   {student.stu_firstName}
                 </td>
-                <td style={{ padding: "12px 15px" }}>{student.stu_lastName}</td>
-                <td style={{ padding: "12px 15px" }}>{student.stu_email}</td>
-                <td style={{ padding: "12px 15px" }}>{student.stu_userName}</td>
-                <td style={{ padding: "12px 15px" }}>{student.stu_courses}</td>
+                <td style={{ padding: "12px 15px", color: "blue" }}>
+                  {student.stu_lastName}
+                </td>
+                <td style={{ padding: "12px 15px", color: "blue" }}>
+                  {student.stu_email}
+                </td>
+                <td style={{ padding: "12px 15px", color: "blue" }}>
+                  {student.stu_userName}
+                </td>
+                <td style={{ padding: "12px 15px", color: "blue" }}>
+                  {student.stu_courses}
+                </td>
               </tr>
             ))}
           </table>
