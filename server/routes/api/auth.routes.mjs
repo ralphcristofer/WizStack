@@ -4,6 +4,8 @@ import {
   signIn,
   signOut,
   forgotPassword,
+  protect,
+  restrictTo,
   resetPassword,
   updatePassword,
   restrictTo,

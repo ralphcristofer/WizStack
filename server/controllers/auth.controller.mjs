@@ -18,6 +18,17 @@ const generateToken = (id, role) => {
   });
 };
 
+const createSendToken = (user, statusCode, res) => {
+  const token = generateToken(user._id);
+  res.status(statusCode).json({
+    status: "Success",
+    token,
+    data: {
+      user,
+    },
+  });
+};
+
 /**
  *
  * @param {} user the user Object retrieved from the database
@@ -99,6 +110,8 @@ const signIn = catchAsync(async (req, res, next) => {
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next((new AppError("Incorrect Email and Password!"), 401));
   }
+
+  
   createSendToken(user, 200, res);
 });
 
@@ -266,6 +279,13 @@ const updatePassword = catchAsync(async (req, res, next) => {
   await user.save();
   createSendToken(user, 200, res);
 });
+
+/**
+ * If User forgot password, he can reset his password by using his email.
+ * @param {*} req The request object.
+ * @param {*} res The response object.
+ * @param {*} next The next middleware.
+ */
 
 /**
  * Sign out a user.

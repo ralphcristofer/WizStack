@@ -1,3 +1,5 @@
+import styles from "./signin.module.css";
+import axiosInstance from "../../services/axios";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,8 +10,8 @@ export const SignIn = () => {
   const { user, signin, signout } = useUser(); // declare function from UserContext
   const navigate = useNavigate();
 
-  const baseURL = "http://localhost:3000";
-  const axiosInstance = axios.create({ baseURL });
+  // const baseURL = "http://localhost:3000";
+  // const axiosInstance = axios.create({ baseURL });
 
   const [userData, updateUserData] = useState({
     userName: "",
@@ -29,8 +31,27 @@ export const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // using Axios
+    // Using Axios
+    try {
+      const response = await axiosInstance.post("/api/auth/signin", {
+        email: userData.userName,
+        password: userData.password,
+      });
+      console.log(response);
+      window.alert(response.data.status);
+      const token = response.data.token;
+      const role = response.data.user.role;
+      signin(token, role);
+      console.log(token, role);
+      console.log(user);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
+  const handleGetAll = async (e) => {
+    e.preventDefault();
     await axiosInstance
       .post("/api/auth/signin", {
         email: userData.userName,
@@ -44,7 +65,7 @@ export const SignIn = () => {
         navigate("/");
       })
       .catch((err) => console.log(err));
-
+    
     // try {
     //   const response = await axiosInstance.post("/api/auth/signin", {
     //     email: userData.userName,
@@ -63,10 +84,10 @@ export const SignIn = () => {
   const handleForgotPassword = (e) => {
     navigate("/forgot_password");
   };
-
+  
   return (
     <div
-      className="login-container bg-gray-100"
+      className="login-container"
       style={{
         maxWidth: "400px",
         margin: "50px auto",
@@ -179,8 +200,16 @@ export const SignIn = () => {
             </button>
           </div>
           <div
+            className="checkbox pull-left"
+            style={{ float: "left", fontSize: "10px" }}
+          >
+            <label>
+              <input type="checkbox" /> Remember Me
+            </label>
+          </div>
+          <div
             className="checkbox pull-right"
-            style={{ textAlign: "center", fontSize: "10px", width: "100%" }}
+            style={{ float: "right", fontSize: "10px" }}
           >
             <label>
               <a
@@ -199,3 +228,22 @@ export const SignIn = () => {
     </div>
   );
 };
+
+// await axiosInstance
+//   .post("/api/auth/signin", {
+//     email: userData.userName,
+//     password: userData.password,
+//   })
+//   .then((response) => {
+//     console.log(response);
+//     window.alert(response.data.status);
+//     // the following two lines work with UserContext
+//     const token = response.data.token;
+//     console.log(token);
+//     const role = response.data.user.role;
+//     console.log(role);
+//     //signin(token);
+//     setUser(token, role);
+//     navigate("/");
+//   })
+//   .catch((err) => console.log(err));
