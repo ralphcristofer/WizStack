@@ -6,6 +6,8 @@ import express from "express";
 import cors from 'cors';
 import connectDb from "./config/config.mjs";
 import { HttpStatus } from "./util/dialogInvoke.mjs";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 // import { signIn, signOut } from './src/db/controllers/auth.controller.mjs';
 // import { createUser, listAllUsers, fetchUser, updateUser, deleteUser } from './src/db/controllers/student.controller.mjs';
@@ -27,6 +29,8 @@ app.use(express.urlencoded({ extended: true }));
   console.log(req.headers);
 }) */
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 // app.get("/", (req, res) => {
 //   res.json({ message: "Welcome to Wizstack Student Management App" });
 // });
@@ -37,6 +41,10 @@ app.get("/wizsecret", (req, res) => {
 
 app.use("/api", userRouter);
 app.use("/api", authRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
+});
 
 app.listen(process.env.PORT, () => {
   httpStatus.showMessage(
