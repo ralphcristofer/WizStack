@@ -1,11 +1,13 @@
 {
   "name": "wizstack",
   "private": true,
-  "version": "1.0.0b",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "vite build && npm install --prefix server",
-    "start": "nodemon server/server.js",
+    "start:front": "vite",
+    "start:back": "nodemon server/server.js",
+    "start": "npm run start:front",
+    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "jest --watchAll --verbose"
