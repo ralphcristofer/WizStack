@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 function StudentDashBoard() {
   const baseURL = "http://localhost:3000";
   const axiosInstance = axios.create({ baseURL });
-
   const [stuData, setStuData] = useState([]);
 
   const handleListAll = async (e) => {
