@@ -1,4 +1,3 @@
-import "./signup.module.css";
 import axiosInstance from "../../services/axios";
 import { useState } from "react";
 import React from "react";

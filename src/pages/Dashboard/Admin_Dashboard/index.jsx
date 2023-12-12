@@ -3,7 +3,6 @@ import axiosInstance from "../../../services/axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../../components/Navbar/Navbar";
-import "./admin_dash_module.css";
 
 function AdminDashBoard() {
   // const baseURL = "http://localhost:3000";
