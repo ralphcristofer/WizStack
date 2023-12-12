@@ -4,7 +4,8 @@ import users from "./../models/users.model.mjs";
 import AppError from "../util/AppError.mjs";
 import catchAsync from "../util/catchAsync.mjs";
 import { promisify } from "util";
-
+import sendEmail from "../util/email.mjs";
+import crypto from "crypto";
 /**
  * generateToken function is used to generate a token for the user.
  * @param {*} id The id of the user.
@@ -17,6 +18,23 @@ const generateToken = (id, role) => {
   });
 };
 
+const createSendToken = (user, statusCode, res) => {
+  const token = generateToken(user._id);
+  res.status(statusCode).json({
+    status: "Success",
+    token,
+    data: {
+      user,
+    },
+  });
+};
+
+/**
+ *
+ * @param {} user the user Object retrieved from the database
+ * @param {*} statusCode statuscode
+ * @param {*} res
+ */
 const createSendToken = (user, statusCode, res) => {
   const token = generateToken(user._id);
   res.status(statusCode).json({
@@ -93,6 +111,7 @@ const signIn = catchAsync(async (req, res, next) => {
     return next((new AppError("Incorrect Email and Password!"), 401));
   }
 
+  
   createSendToken(user, 200, res);
 });
 
@@ -170,17 +189,95 @@ const forgotPassword = catchAsync(async (req, res, next) => {
       new AppError("We cannot match the account with your email", 404)
     );
   }
-
+  console.log(user);
   // Generate random reset token
   const resetToken = user.createPasswordResetToken();
 
   // Properties of 'passwordResetToken' and 'passwordResetExpired' need to be saved to the datebase
   await user.save({ validateBeforeSave: false });
 
-  res.status(200).json({
-    status: "The reset token has been sent your registered email address",
-    resetToken: resetToken,
+  // Send the reset token to user's email
+  const resetURL = `${req.protocol}://${req.get(
+    "host"
+  )}/api/auth/resetPassword/${resetToken}`;
+
+  const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}. \n
+  If you didn't forget your password, forget this email.`;
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: "Your new token is only valid for 10 minutes!",
+      message,
+    });
+    res.status(200).json({
+      status: "success",
+      message: "Token has been sent to the email.",
+      data: {
+        user,
+      },
+    });
+  } catch (err) {
+    user.passwordResetToken = undefined;
+    user.passwordResetExpires = undefined;
+    await user.save({ validateBeforeSave: false });
+
+    return next(
+      new AppError("There was an error sending the email. Try again later."),
+      500
+    );
+  }
+});
+
+/**
+ * Find matched user in the database and update the 'password' and 'passwordConfirm' fields
+ */
+const resetPassword = catchAsync(async (req, res, next) => {
+  // 1) get user based on the token
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+  const user = await users.findOne({
+    passwordResetToken: hashedToken,
+    passwordResetExpires: { $gt: Date.now() },
   });
+
+  console.log(user);
+
+  // 2) If token has not expired, and there is user, set the new password
+  if (!user) {
+    return next(new AppError("Token is invalid or has been expried", 400));
+  }
+
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpires = undefined;
+
+  await user.save();
+
+  createSendToken(user, 200, res);
+});
+
+/**
+ * updatePassword => allow current logged in user to update password
+ */
+const updatePassword = catchAsync(async (req, res, next) => {
+  // Get user from the collection
+  const user = users.findById(req.user.id).select("+password");
+
+  //check if POSTed current password is correct
+  if (!user.correctPassword(req.body.passwordCurrent, user.password)) {
+    return next(new AppError("your current password is wrong."), 401);
+  }
+
+  // 3) If so, update password
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+
+  await user.save();
+  createSendToken(user, 200, res);
 });
 
 /**
@@ -218,4 +315,13 @@ const signOut = catchAsync(async (req, res, next) => {
   });
 });
 
-export { signUp, signIn, signOut, protect, restrictTo, forgotPassword };
+export {
+  signUp,
+  signIn,
+  signOut,
+  protect,
+  restrictTo,
+  forgotPassword,
+  resetPassword,
+  updatePassword,
+};

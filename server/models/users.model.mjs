@@ -110,6 +110,12 @@ usersSchema.pre("save", async function (next) {
   next();
 });
 
+usersSchema.pre("save", function (next) {
+  if (!this.isModified("password") || this.isNew) return next();
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
 /**
  * Create a function that can be implemented in all documents in a specific collection.
  * @param {*} candidatePassword
@@ -121,6 +127,17 @@ usersSchema.methods.correctPassword = async function (
   userPassword
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+usersSchema.methods.changePasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestmap = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+    console.log(this.passwordChangedAt, JWTTimestamp);
+    return JWTTimestamp < changedTimestmap;
+  }
 };
 
 usersSchema.methods.createPasswordResetToken = function () {

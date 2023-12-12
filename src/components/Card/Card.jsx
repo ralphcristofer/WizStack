@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Card = ({ title, description, buttonText, link}) => {
     return (
-        <div style={{ minWidth: '250px', minHeight: '250px' }}>
+        <div style={{ minWidth: '300px', minHeight: '250px' }}>
             <div className="p-7 bg-white border border-gray-200 rounded-lg">
                 <h3 className="text-xl font-semibold mb-7">{title}</h3>
                 <p className="font-medium leading-7 text-gray-500 mb-6">{description}</p>

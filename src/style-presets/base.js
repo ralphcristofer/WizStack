@@ -26,3 +26,5 @@ export const base = {
 
     paragraph: "font-poppins font-normal text-dimWhite text-gray-700 text-[18px] leading-[30.8px]",
 }
+
+export default base;

@@ -1,5 +1,6 @@
 import styles from "./signin.module.css";
 import axiosInstance from "../../services/axios";
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
@@ -30,8 +31,7 @@ export const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // using Axios
-
+    // Using Axios
     try {
       const response = await axiosInstance.post("/api/auth/signin", {
         email: userData.userName,
@@ -52,17 +52,39 @@ export const SignIn = () => {
 
   const handleGetAll = async (e) => {
     e.preventDefault();
+    await axiosInstance
+      .post("/api/auth/signin", {
+        email: userData.userName,
+        password: userData.password,
+      })
+      .then((response) => {
+        console.log(response);
+        window.alert(response.data.status);
+        // the following two lines work with UserContext
 
-    const response = await axiosInstance.get("/api/users");
-    console.log(response.data);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+    
+    // try {
+    //   const response = await axiosInstance.post("/api/auth/signin", {
+    //     email: userData.userName,
+    //     password: userData.password,
+    //   });
+    //   console.log(response);
+    //   window.alert(response.data.status);
+    //   const token = response.data.token;
+    //   const role = response.data.user.role;
+    //   navigate("/");
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   const handleForgotPassword = (e) => {
     navigate("/forgot_password");
   };
-
-  //console.log(users);
-
+  
   return (
     <div
       className="login-container"
@@ -70,6 +92,7 @@ export const SignIn = () => {
         maxWidth: "400px",
         margin: "50px auto",
         padding: "20px",
+        height: "400px",
         boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
       }}
     >
@@ -78,6 +101,8 @@ export const SignIn = () => {
         style={{
           margin: "0 auto",
           padding: "20px",
+          width: "100%",
+          height: "350px",
           backgroundColor: "#f7f7f7",
         }}
       >

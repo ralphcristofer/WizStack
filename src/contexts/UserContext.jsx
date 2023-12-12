@@ -4,6 +4,11 @@ import { jwtDecode } from "jwt-decode";
 // Create a context to manage user-related state and actions
 const UserContext = createContext();
 
+/**
+ * Provides a context to manage user-related state and actions.
+ * @param {*} children - Components to be wrapped by the context.
+ * @returns - User context provider.
+ */
 export const UserProvider = ({ children }) => {
   // State to hold user information
   const [user, setUser] = useState({

@@ -19,6 +19,8 @@ import StudentDashBoard from "./pages/Dashboard/Student_Dashboard/index.jsx";
 import { SearchByID } from "./pages/Dashboard/Admin_Dashboard/FindOneUser/index.jsx";
 import { DeleteByID } from "./pages/Dashboard/Admin_Dashboard/DeleteUser/index.jsx";
 import { UpdateUser } from "./pages/Dashboard/Admin_Dashboard/UpdateUser/index.jsx";
+import { ForgotPassword } from "./pages/ForgotPassword/index.jsx";
+import { ResetPassword } from "./pages/ResetPassword/index.jsx";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -34,16 +36,17 @@ const App = () => {
         <Route path="/search_by_id" element={<SearchByID />} />
         <Route path="/delete_by_id" element={<DeleteByID />} />
         <Route path="/update_by_id" element={<UpdateUser />} />
+        <Route path="/forgot_password" element={<ForgotPassword />} />
+        <Route path="/reset_password" element={<ResetPassword />} />
       </Route>
     )
   );
 
   return (
-    <UserProvider>
-      <div className="App">
-        <RouterProvider router={router} />
-      </div>
-    </UserProvider>
+    <div className="App">
+      <UserProvider>
+      <RouterProvider router={router} />
+    </div>
   );
 };
 
