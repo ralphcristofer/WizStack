@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from '../../components/Navbar/Navbar.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
+import styles from './contact.module.css';
 
 export const Contact = () => {
     /**
@@ -134,34 +135,6 @@ export const Contact = () => {
                     </div>
                 </div>
             </section>
-            {/* <div className={styles.container}>
-                <h1>Contact Us</h1>
-                <form onSubmit={handleSubmit}>
-                    <div className={styles.formGroup}>
-                        <label htmlFor='name'>Name</label>
-                        <input type='text' id='name' name='name' className={styles.input} placeholder='Enter your name' required />
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <label htmlFor='email'>Email</label>
-                        <input type='email' id='email' name='email' className={styles.input} placeholder='Enter your email address' required />
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <label htmlFor='phone'>Phone</label>
-                        <input type='text' id='phone' name='phone' className={styles.input} placeholder='Enter your phone number' required />
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <label htmlFor='message'>Message</label>
-                        <textarea id='message' name='message' className={styles.textarea} placeholder='Enter your message' required></textarea>
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <button type='submit' className={styles.button}>Submit</button>
-                    </div>
-                </form>
-            </div> */}
             <Footer />
         </>
     )
