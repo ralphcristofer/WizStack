@@ -1,6 +1,4 @@
-import styles from "./signin.module.css";
 import axiosInstance from "../../services/axios";
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
@@ -39,11 +37,11 @@ export const SignIn = () => {
       });
       console.log(response);
       window.alert(response.data.status);
-      const token = response.data.token;
-      const role = response.data.user.role;
-      signin(token, role);
-      console.log(token, role);
-      console.log(user);
+      // const token = response.data.token;
+      // const role = response.data.user.role;
+      // signin(token, role);
+      // console.log(token, role);
+      // console.log(user);
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -65,7 +63,7 @@ export const SignIn = () => {
         navigate("/");
       })
       .catch((err) => console.log(err));
-    
+
     // try {
     //   const response = await axiosInstance.post("/api/auth/signin", {
     //     email: userData.userName,
@@ -84,7 +82,7 @@ export const SignIn = () => {
   const handleForgotPassword = (e) => {
     navigate("/forgot_password");
   };
-  
+
   return (
     <div
       className="login-container"
@@ -124,9 +122,10 @@ export const SignIn = () => {
             marginBottom: "20px",
             fontSize: "24px",
             fontWeight: "bold",
+            color: "gray",
           }}
         >
-          <strong>Welcome,</strong> please login
+          <strong style={{ color: "Orange" }}>Welcome,</strong> please login
         </div>
 
         <form
@@ -144,7 +143,13 @@ export const SignIn = () => {
               required
               value={userData.userName}
               onChange={handleInputChange}
-              style={{ fontSize: "16px", padding: "10px 40px" }}
+              style={{
+                fontSize: "16px",
+                padding: "10px 40px",
+                backgroundColor: "#e6f7ff",
+                color: "#003366",
+                marginBottom: "6px",
+              }}
             />
             <i
               className="fa fa-user"
@@ -170,7 +175,13 @@ export const SignIn = () => {
               required
               value={userData.password}
               onChange={handleInputChange}
-              style={{ fontSize: "16px", padding: "10px 40px" }}
+              style={{
+                fontSize: "16px",
+                padding: "10px 40px",
+                backgroundColor: "#e6f7ff",
+                color: "#003366",
+                marginBottom: "6px",
+              }}
             />
             <i
               className="fa fa-lock"
@@ -188,12 +199,12 @@ export const SignIn = () => {
               type="submit"
               className="btn btn-success btn-lg btn-block"
               style={{
-                backgroundColor: "#5cb85c",
                 color: "white",
                 fontSize: "18px",
                 padding: "10px",
                 margin: "10px 0",
                 width: "80%",
+                background: "linear-gradient(to right, #009999, #004d4d)",
               }}
             >
               Login
@@ -203,7 +214,7 @@ export const SignIn = () => {
             className="checkbox pull-left"
             style={{ float: "left", fontSize: "10px" }}
           >
-            <label>
+            <label style={{ color: "#5cb85c", fontSize: "16px" }}>
               <input type="checkbox" /> Remember Me
             </label>
           </div>
@@ -217,7 +228,11 @@ export const SignIn = () => {
                 href="#"
                 title="forget"
                 onClick={handleForgotPassword}
-                style={{ textDecoration: "none", color: "#5cb85c" }}
+                style={{
+                  textDecoration: "none",
+                  color: "#5cb85c",
+                  fontSize: "16px",
+                }}
               >
                 Forgot your password
               </a>
