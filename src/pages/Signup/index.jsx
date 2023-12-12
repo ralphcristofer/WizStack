@@ -1,11 +1,11 @@
 import "./signup.module.css";
-import axios from "axios";
+import axiosInstance from "../../services/axios";
 import { useState } from "react";
 import React from "react";
 
 export const SignUp = () => {
-  const baseURL = "http://localhost:3000";
-  const axiosInstance = axios.create({ baseURL });
+  // const baseURL = "http://localhost:3000";
+  // const axiosInstance = axios.create({ baseURL });
 
   const [userData, updateUserData] = useState({
     firstName: "",

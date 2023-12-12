@@ -1,5 +1,5 @@
 import styles from "./signin.module.css";
-import axios from "axios";
+import axiosInstance from "../../services/axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
@@ -9,8 +9,8 @@ export const SignIn = () => {
   const { user, signin, signout } = useUser(); // declare function from UserContext
   const navigate = useNavigate();
 
-  const baseURL = "http://localhost:3000";
-  const axiosInstance = axios.create({ baseURL });
+  // const baseURL = "http://localhost:3000";
+  // const axiosInstance = axios.create({ baseURL });
 
   const [userData, updateUserData] = useState({
     userName: "",

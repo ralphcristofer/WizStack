@@ -15,7 +15,7 @@ import { SignUp } from "./pages/Signup/index.jsx";
 import { SignIn } from "./pages/Signin/index.jsx";
 import { UserProvider } from "./contexts/UserContext.jsx";
 import AdminDashBoard from "./pages/Dashboard/Admin_Dashboard/index.jsx";
-import StudentDashBoard from "./pages/Dashboard/Student_Dashboard/ex_pages.jsx";
+import StudentDashBoard from "./pages/Dashboard/Student_Dashboard/index.jsx";
 import { SearchByID } from "./pages/Dashboard/Admin_Dashboard/FindOneUser/index.jsx";
 import { DeleteByID } from "./pages/Dashboard/Admin_Dashboard/DeleteUser/index.jsx";
 import { UpdateUser } from "./pages/Dashboard/Admin_Dashboard/UpdateUser/index.jsx";

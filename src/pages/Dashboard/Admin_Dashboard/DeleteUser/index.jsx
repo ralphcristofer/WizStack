@@ -1,11 +1,11 @@
-import axios from "axios";
+import axiosInstance from "../../../../services/axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../../../components/Navbar/Navbar";
 
 export const DeleteByID = () => {
-  const baseURL = "http://localhost:3000";
-  const axiosInstance = axios.create({ baseURL });
+  // const baseURL = "http://localhost:3000";
+  // const axiosInstance = axios.create({ baseURL });
   const navigate = useNavigate();
 
   const [inputData, setInputData] = useState({

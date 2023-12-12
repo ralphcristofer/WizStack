@@ -14,14 +14,14 @@
  */
 
 import "./admin_dash_module.css";
-import axios from "axios";
+import axiosInstance from "../../../services/axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../../components/Navbar/Navbar";
 
 function AdminDashBoard() {
-  const baseURL = "http://localhost:3000";
-  const axiosInstance = axios.create({ baseURL });
+  // const baseURL = "http://localhost:3000";
+  // const axiosInstance = axios.create({ baseURL });
   const navigate = useNavigate();
 
   const [stuData, setStuData] = useState([]);
