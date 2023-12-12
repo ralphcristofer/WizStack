@@ -36,7 +36,7 @@ export const ForgotPassword = () => {
   };
 
   return (
-    <div
+    <div className="bg-gray-100"
       style={{
         maxWidth: "500px",
         margin: "50px auto",

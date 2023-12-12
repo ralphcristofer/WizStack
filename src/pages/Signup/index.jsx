@@ -47,94 +47,96 @@ export const SignUp = () => {
       });
   };
   return (
-    <div class="container">
-      <div class="card">
-        <div class="card_title">
-          <h1>Create Account</h1>
-          <span>
-            Already have an account? <a href="login">Sign In</a>
-          </span>
-        </div>
-        <div class="form">
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="firstName"
-              id="fname"
-              placeholder="First Name"
-              value={userData.firstName}
-              onChange={handleInputChange}
-            />
-            <input
-              type="text"
-              name="lastName"
-              id="lname"
-              placeholder="Last Name"
-              value={userData.lastName}
-              onChange={handleInputChange}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              id="email"
-              value={userData.email}
-              onChange={handleInputChange}
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              id="password"
-              value={userData.password}
-              onChange={handleInputChange}
-            />
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm Your Password"
-              value={userData.confirmPassword}
-              onChange={handleInputChange}
-            />
-            <input
-              type="text"
-              name="userName"
-              placehoder="(Optional) User Name"
-              value={userData.userName}
-              onChange={handleInputChange}
-            />
-            <div className="div-radio-role">
-              <div className="sub-div-radio">
-                <label for="role_student">Student</label>{" "}
-                <input
-                  type="radio"
-                  name="role"
-                  value="student"
-                  id="role_student"
-                  checked={userData.role === "student"}
-                  onChange={handleInputChange}
-                />
+    <div className="bg-gray-100">
+      <div className="container">
+        <div className="card">
+          <div className="card_title">
+            <h1>Create Account</h1>
+            <span>
+              Already have an account? <a href="login">Sign In</a>
+            </span>
+          </div>
+          <div className="form">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="firstName"
+                id="fname"
+                placeholder="First Name"
+                value={userData.firstName}
+                onChange={handleInputChange}
+              />
+              <input
+                type="text"
+                name="lastName"
+                id="lname"
+                placeholder="Last Name"
+                value={userData.lastName}
+                onChange={handleInputChange}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                id="email"
+                value={userData.email}
+                onChange={handleInputChange}
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                id="password"
+                value={userData.password}
+                onChange={handleInputChange}
+              />
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Your Password"
+                value={userData.confirmPassword}
+                onChange={handleInputChange}
+              />
+              <input
+                type="text"
+                name="userName"
+                placehoder="(Optional) User Name"
+                value={userData.userName}
+                onChange={handleInputChange}
+              />
+              <div className="div-radio-role">
+                <div className="sub-div-radio">
+                  <label for="role_student">Student</label>{" "}
+                  <input
+                    type="radio"
+                    name="role"
+                    value="student"
+                    id="role_student"
+                    checked={userData.role === "student"}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="sub-div-radio">
+                  <label for="role_admin">Administrator</label>{" "}
+                  <input
+                    type="radio"
+                    name="role"
+                    value="administrator"
+                    id="role_admin"
+                    checked={userData.role === "administrator"}
+                    onChange={handleInputChange}
+                  />
+                </div>
               </div>
-              <div className="sub-div-radio">
-                <label for="role_admin">Administrator</label>{" "}
-                <input
-                  type="radio"
-                  name="role"
-                  value="administrator"
-                  id="role_admin"
-                  checked={userData.role === "administrator"}
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
-            <button type="submit">Sign Up</button>
-          </form>
-        </div>
-        <div class="card_terms">
-          <input type="checkbox" name="" id="terms" />{" "}
-          <span>
-            I have read and agree to the <a href="">Terms of Service</a>
-          </span>
+              <button type="submit">Sign Up</button>
+            </form>
+          </div>
+          <div className="card_terms">
+            <input type="checkbox" name="" id="terms" />{" "}
+            <span>
+              I have read and agree to the <a href="">Terms of Service</a>
+            </span>
+          </div>
         </div>
       </div>
     </div>

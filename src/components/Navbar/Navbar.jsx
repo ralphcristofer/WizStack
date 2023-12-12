@@ -11,34 +11,36 @@ const Navbar = () => {
     const isAuthenticated = !!user;
 
     return (
-        <div className={styles.navbar_container}>
-            {/* Logo linking to the home page */}
-            <Link to={'/'}>
-                <img src={Logo} alt="WizStack Title" className={styles.logo} />
-            </Link>
-            {/* Navigation links */}
-            <div className={styles.navbar_links}>
-                <Link to={'/dashboard'}>DASHBOARD</Link>
-                <Link to={'/about'}>ABOUT</Link>
-                <Link to={'/contact'}>CONTACT</Link>
-                <Link to={'/'}>HOME</Link>
-            </div>
-            {/* Action links based on user authentication and role */}
-            <div className={styles.navbar_actions}>
-                {isAdmin && <Link to={'/users'}>USERS</Link>}
-                {isAuthenticated ? (
-                    <>
-                        <Link to={'/profile'}>PROFILE</Link>
-                        <Link to={'/'} onClick={signout}>
-                            SIGN OUT
-                        </Link>
-                    </>
-                ) : (
-                    <>
-                        <Link to={'/signup'}>SIGN UP</Link>
-                        <Link to={'/signin'}>SIGN IN</Link>
-                    </>
-                )}
+        <div className='bg-gray-100'>
+            <div className={styles.navbar_container}>
+                {/* Logo linking to the home page */}
+                <Link to={'/'}>
+                    <img src={Logo} alt="WizStack Title" className={styles.logo} />
+                </Link>
+                {/* Navigation links */}
+                <div className={styles.navbar_links}>
+                    <Link to={'/dashboard'}>DASHBOARD</Link>
+                    <Link to={'/about'}>ABOUT</Link>
+                    <Link to={'/contact'}>CONTACT</Link>
+                    <Link to={'/'}>HOME</Link>
+                </div>
+                {/* Action links based on user authentication and role */}
+                <div className={styles.navbar_actions}>
+                    {isAdmin && <Link to={'/users'}>USERS</Link>}
+                    {isAuthenticated ? (
+                        <>
+                            <Link to={'/profile'}>PROFILE</Link>
+                            <Link to={'/'} onClick={signout}>
+                                SIGN OUT
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            <Link to={'/signup'}>SIGN UP</Link>
+                            <Link to={'/signin'}>SIGN IN</Link>
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     );

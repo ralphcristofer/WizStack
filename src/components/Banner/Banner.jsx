@@ -12,10 +12,12 @@ export const Banner = ({ title, link, linkTitle }) => {
         <div className="bg-gradient-to-r from-orange-500 to-red-500">
             <div className="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
                 <div className="grid md:grid-cols-2 md:justify-between md:items-center gap-2">
-                    <div className="md:text-start md:order-2 md:flex md:justify-end md:items-center">
+                    <div className="md:text-start md:order-1 md:flex md:justify-start md:items-center">
                         <p className="me-5 inline-block text-sm font-semibold text-white">
                             <span className="block md:inline-block">{title}</span>
                         </p>
+                    </div>
+                    <div className="md:text-end md:order-2 md:flex md:justify-end md:items-center">
                         <Link to={link} className="inline-flex justify-center items-center gap-x-3 text-center hover:text-white bg-gradient-to-tl from-orange-500 to-red-500 hover:from-red-500 hover:to-orange-500 border border-transparent text-white text-sm font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-white py-3 px-4">
                             {linkTitle}
                             <ArrowIcon />

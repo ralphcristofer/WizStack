@@ -44,7 +44,7 @@ export const ResetPassword = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gray-100">
       <div
         style={{
           display: "flex",
@@ -94,7 +94,7 @@ export const ResetPassword = () => {
                 type="password"
                 id="password"
                 name="password"
-                // required
+                // Required
                 value={userData.password}
                 onChange={handleInputChange}
                 style={{

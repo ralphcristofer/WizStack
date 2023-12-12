@@ -64,11 +64,9 @@ export const SignIn = () => {
     navigate("/forgot_password");
   };
 
-  //console.log(users);
-
   return (
     <div
-      className="login-container"
+      className="login-container bg-gray-100"
       style={{
         maxWidth: "400px",
         margin: "50px auto",
